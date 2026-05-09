@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Wool Jacket | MAVEN</title>
+    <meta name="description" content="Discover premium menswear at MAVEN. High-quality materials and modern tailoring for the contemporary man.">
+    <meta property="og:title" content="Product Detail | MAVEN">
+    <meta property="og:type" content="product">
+    <title>Product Detail | MAVEN</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header scrolled">
         <div class="container nav-container">
-            <div class="mobile-menu-btn">
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -17,20 +20,23 @@
             <div class="logo">
                 <a href="index.html">MAVEN</a>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="#">SHOP</a></li>
-                    <li><a href="#">COLLECTIONS</a></li>
-                    <li><a href="#">NEW ARRIVALS</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="index.html#shop">SHOP</a></li>
+                    <li><a href="index.html#categories">COLLECTIONS</a></li>
+                    <li><a href="index.html#philosophy">ABOUT</a></li>
                 </ul>
             </nav>
             <div class="header-icons">
-                <a href="#" class="icon search-icon"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" alt="Search"></a>
-                <a href="#" class="icon account-icon"><img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account"></a>
-                <a href="#" class="icon cart-icon">
+                <div class="search-container">
+                    <img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                </div>
+                <a href="account.html" class="icon account-icon" aria-label="Account">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
+                </a>
+                <a href="cart.html" class="icon cart-icon" aria-label="Cart">
                     <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
                     <span class="cart-count">0</span>
                 </a>
@@ -40,157 +46,49 @@
 
     <div class="breadcrumb">
         <div class="container">
-            <p><a href="index.html">Home</a> / <a href="#">Jackets</a> / Premium Wool Jacket</p>
+            <p id="breadcrumbPath"><a href="index.html">Home</a> / <a href="#">Shop</a> / Product</p>
         </div>
     </div>
 
     <section class="product-detail">
         <div class="container">
-            <div class="product-detail-grid">
-                <div class="product-gallery">
-                    <div class="main-image-container">
-                        <img id="mainImage" src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?q=80&w=2070&auto=format&fit=crop" alt="Premium Wool Jacket">
-                        <span class="zoom-icon">🔍 ZOOM</span>
-                    </div>
-                    <div class="thumbnail-strip">
-                        <img src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?q=80&w=2070&auto=format&fit=crop" alt="View 1" class="thumbnail active">
-                        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" alt="View 2" class="thumbnail">
-                        <img src="https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=2070&auto=format&fit=crop" alt="View 3" class="thumbnail">
-                    </div>
-                </div>
-
-                <div class="product-info-panel">
-                    <p class="product-brand">CORE COLLECTION</p>
-                    <h1 class="product-title">Premium Wool Jacket</h1>
-
-                    <div class="price-section">
-                        <span class="current-price">$189.99</span>
-                        <span class="original-price">$249.99</span>
-                        <span class="discount-badge">-24%</span>
-                    </div>
-
-                    <div class="rating-section">
-                        <div class="stars">★★★★★</div>
-                        <span class="review-count">(127 reviews)</span>
-                    </div>
-
-                    <p class="stock-status in-stock">✓ IN STOCK</p>
-
-                    <p class="product-description">
-                        Masterfully crafted from premium wool blend, this jacket combines timeless elegance with contemporary design. Featuring a modern tailored fit, it provides both warmth and sophisticated style for any occasion.
-                    </p>
-
-                    <ul class="features-list">
-                        <li>Premium wool blend fabric</li>
-                        <li>Modern tailored fit</li>
-                        <li>Inner pocket storage</li>
-                        <li>Machine washable</li>
-                    </ul>
-
-                    <div class="purchase-options">
-                        <div class="option-group">
-                            <label>SIZE</label>
-                            <div class="size-selector">
-                                <button class="size-btn" data-size="XS">XS</button>
-                                <button class="size-btn" data-size="S">S</button>
-                                <button class="size-btn active" data-size="M">M</button>
-                                <button class="size-btn" data-size="L">L</button>
-                                <button class="size-btn" data-size="XL">XL</button>
-                            </div>
-                        </div>
-
-                        <div class="option-group">
-                            <label>COLOR: <span id="selectedColor">Charcoal</span></label>
-                            <div class="color-selector">
-                                <button class="color-btn" style="background-color: #000000;" data-color="Black"></button>
-                                <button class="color-btn active" style="background-color: #4a4a4a;" data-color="Charcoal"></button>
-                                <button class="color-btn" style="background-color: #8B4513;" data-color="Brown"></button>
-                                <button class="color-btn" style="background-color: #1a1a2e;" data-color="Navy"></button>
-                            </div>
-                        </div>
-
-                        <div class="option-group">
-                            <label>QUANTITY</label>
-                            <div class="quantity-selector">
-                                <button class="qty-btn minus">−</button>
-                                <input type="number" id="quantity" value="1" min="1" max="10">
-                                <button class="qty-btn plus">+</button>
-                            </div>
-                        </div>
-
-                        <div class="action-buttons">
-                            <button class="btn btn-primary add-to-cart-large">ADD TO CART</button>
-                            <button class="wishlist-btn">♡ ADD TO WISHLIST</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="product-detail-grid" id="productDetailGrid"></div>
 
             <div class="additional-info">
                 <div class="info-tabs">
                     <button class="tab-btn active" data-tab="specifications">SPECIFICATIONS</button>
                     <button class="tab-btn" data-tab="shipping">SHIPPING & RETURNS</button>
-                    <button class="tab-btn" data-tab="care">CARE INSTRUCTIONS</button>
+                    <button class="tab-btn" data-tab="care">CARE GUIDE</button>
                 </div>
 
                 <div class="tab-content active" id="specifications">
-                    <table class="specs-table">
-                        <tr>
-                            <td>Material</td>
-                            <td>80% Wool, 20% Polyester</td>
-                        </tr>
-                        <tr>
-                            <td>Care</td>
-                            <td>Machine wash cold, lay flat to dry</td>
-                        </tr>
-                        <tr>
-                            <td>Fit</td>
-                            <td>Modern Tailored</td>
-                        </tr>
-                        <tr>
-                            <td>Pockets</td>
-                            <td>2 front patch pockets, 1 interior</td>
-                        </tr>
-                    </table>
+                    <div id="specsTableContainer"></div>
                 </div>
 
                 <div class="tab-content" id="shipping">
                     <h4>Shipping Information</h4>
-                    <p>Free shipping on orders over $100. Standard delivery: 5-7 business days.</p>
+                    <p>Free standard shipping on orders over $150. Estimated delivery: 3-5 business days.</p>
                     <h4 style="margin-top: 20px;">Returns & Exchanges</h4>
-                    <p>30-day return policy. Free returns on all orders.</p>
+                    <p>We offer a 30-day return policy for all unworn items in their original packaging.</p>
                 </div>
 
                 <div class="tab-content" id="care">
-                    <h4>Care Guide</h4>
-                    <p>To maintain the quality of the wool blend, we recommend machine washing cold with like colors. Do not bleach. Lay flat to dry to preserve the tailored fit.</p>
+                    <div id="careInstructionsContainer"></div>
                 </div>
             </div>
 
             <div class="reviews-section">
                 <div class="section-title">
-                    <h2>CUSTOMER REVIEWS (127)</h2>
+                    <h2>CUSTOMER REVIEWS</h2>
                 </div>
-                <div class="reviews-container">
-                    <div class="review-item">
-                        <div class="review-header">
-                            <div class="stars">★★★★★</div>
-                            <span class="review-date">Oct 12, 2024</span>
-                        </div>
-                        <h4 class="review-title">Excellent Quality</h4>
-                        <p class="review-text">The fit is perfect and the material feels very premium. Highly recommend for anyone looking for a versatile jacket.</p>
-                        <p class="review-author">James W.</p>
-                    </div>
-                    <div class="review-item">
-                        <div class="review-header">
-                            <div class="stars">★★★★☆</div>
-                            <span class="review-date">Sep 28, 2024</span>
-                        </div>
-                        <h4 class="review-title">Great Silhoutte</h4>
-                        <p class="review-text">Love the minimalist design. It's a bit heavier than I expected, which is great for cooler days.</p>
-                        <p class="review-author">Michael S.</p>
-                    </div>
+                <div class="reviews-container" id="reviewsContainer"></div>
+            </div>
+
+            <div class="related-products">
+                <div class="section-title">
+                    <h2>YOU MAY ALSO LIKE</h2>
                 </div>
+                <div class="product-grid" id="relatedProductsGrid"></div>
             </div>
         </div>
     </section>
@@ -207,17 +105,15 @@
                         <li><a href="#">Press</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>SHOP</h4>
                     <ul>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Collections</a></li>
+                        <li><a href="index.html#shop">New Arrivals</a></li>
+                        <li><a href="index.html#categories">Collections</a></li>
                         <li><a href="#">Sale</a></li>
                         <li><a href="#">Gift Cards</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>SUPPORT</h4>
                     <ul>
@@ -227,7 +123,6 @@
                         <li><a href="#">Contact Us</a></li>
                     </ul>
                 </div>
-
                 <div class="footer-column">
                     <h4>FOLLOW</h4>
                     <ul>
@@ -238,7 +133,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p>&copy; 2024 MAVEN. All rights reserved.</p>
                 <div class="footer-links">
@@ -250,6 +144,176 @@
         </div>
     </footer>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = parseInt(params.get('id')) || 1;
+            const product = products.find(p => p.id === productId);
+
+            if (product) {
+                document.title = `${product.name} | MAVEN`;
+                document.getElementById('breadcrumbPath').innerHTML = `<a href="index.html">Home</a> / <a href="index.html#shop">${product.category}</a> / ${product.name}`;
+
+                const detailGrid = document.getElementById('productDetailGrid');
+                detailGrid.innerHTML = `
+                    <div class="product-gallery">
+                        <div class="main-image-container">
+                            <img id="mainImage" src="${product.image}" alt="${product.name}">
+                            <span class="zoom-icon" id="zoomTrigger">🔍 ZOOM</span>
+                        </div>
+                        <div class="thumbnail-strip">
+                            ${product.images.map((img, i) => `<img src="${img}" alt="View ${i+1}" class="thumbnail ${i === 0 ? 'active' : ''}">`).join('')}
+                        </div>
+                    </div>
+
+                    <div class="product-info-panel">
+                        <p class="product-brand">MAVEN CORE</p>
+                        <h1 class="product-title">${product.name}</h1>
+                        <div class="price-section">
+                            <span class="current-price">$${product.price.toFixed(2)}</span>
+                            ${product.originalPrice > product.price ? `
+                                <span class="original-price">$${product.originalPrice.toFixed(2)}</span>
+                                <span class="discount-badge">-${Math.round((1 - product.price/product.originalPrice)*100)}%</span>
+                            ` : ''}
+                        </div>
+                        <div class="rating-section">
+                            <div class="stars">${renderStars(product.rating)}</div>
+                            <span class="review-count">(${product.reviews} reviews)</span>
+                        </div>
+                        <p class="stock-status ${product.inStock ? 'in-stock' : 'out-of-stock'}">
+                            ${product.inStock ? '✓ IN STOCK' : '✕ OUT OF STOCK'}
+                        </p>
+                        <p class="product-description">${product.description}</p>
+                        <ul class="features-list">
+                            ${product.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                        <div class="purchase-options">
+                            <div class="option-group">
+                                <label>SIZE</label>
+                                <div class="size-selector">
+                                    ${product.sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join('')}
+                                </div>
+                            </div>
+                            <div class="option-group">
+                                <label>COLOR</label>
+                                <div class="color-selector">
+                                    ${product.colors.map(c => `<button class="color-btn" style="background-color: ${c.toLowerCase()};" data-color="${c}"></button>`).join('')}
+                                </div>
+                            </div>
+                            <div class="option-group">
+                                <label>QUANTITY</label>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn minus">−</button>
+                                    <input type="number" id="quantity" value="1" min="1" max="10">
+                                    <button class="qty-btn plus">+</button>
+                                </div>
+                            </div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary add-to-cart-large" onclick="addToCart(${product.id})">ADD TO CART</button>
+                                <button class="wishlist-btn" onclick="toggleWishlist(${product.id})">♡</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('specsTableContainer').innerHTML = `
+                    <table class="specs-table">
+                        <tr><td>Material</td><td>${product.material}</td></tr>
+                        <tr><td>Category</td><td>${product.category}</td></tr>
+                        <tr><td>Subcategory</td><td>${product.subcategory}</td></tr>
+                        <tr><td>Season</td><td>${product.season.join(', ')}</td></tr>
+                    </table>
+                `;
+                document.getElementById('careInstructionsContainer').innerHTML = `<p>${product.careInstructions}</p>`;
+
+                const reviewsContainer = document.getElementById('reviewsContainer');
+                for (let i = 0; i < 3; i++) {
+                    const review = document.createElement('div');
+                    review.className = 'review-item';
+                    review.innerHTML = `
+                        <div class="review-header">
+                            <div class="stars">★★★★★</div>
+                            <span class="review-date">Oct ${10 + i}, 2024</span>
+                        </div>
+                        <h4 class="review-title">Excellent Quality</h4>
+                        <p class="review-text">The material feels very premium and the fit is exactly as described. MAVEN never disappoints.</p>
+                        <p class="review-author">Customer ${i+1}</p>
+                    `;
+                    reviewsContainer.appendChild(review);
+                }
+
+                const relatedGrid = document.getElementById('relatedProductsGrid');
+                const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
+                related.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `
+                        <div class="product-image-container">
+                            <a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
+                        </div>
+                        <div class="product-info">
+                            <h4 class="product-name">${p.name}</h4>
+                            <p class="product-price">$${p.price.toFixed(2)}</p>
+                        </div>
+                    `;
+                    relatedGrid.appendChild(card);
+                });
+
+                attachProductListeners();
+            }
+        });
+
+        function attachProductListeners() {
+            const mainImg = document.getElementById('mainImage');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(t => {
+                t.addEventListener('click', () => {
+                    mainImg.src = t.src;
+                    thumbnails.forEach(th => th.classList.remove('active'));
+                    t.classList.add('active');
+                });
+            });
+
+            const sizeBtns = document.querySelectorAll('.size-btn');
+            sizeBtns.forEach(b => {
+                b.addEventListener('click', () => {
+                    sizeBtns.forEach(btn => btn.classList.remove('active'));
+                    b.classList.add('active');
+                });
+            });
+
+            const colorBtns = document.querySelectorAll('.color-btn');
+            colorBtns.forEach(b => {
+                b.addEventListener('click', () => {
+                    colorBtns.forEach(btn => btn.classList.remove('active'));
+                    b.classList.add('active');
+                });
+            });
+
+            const qtyInput = document.getElementById('quantity');
+            document.querySelector('.qty-btn.minus').addEventListener('click', () => {
+                if (qtyInput.value > 1) qtyInput.value--;
+            });
+            document.querySelector('.qty-btn.plus').addEventListener('click', () => {
+                if (qtyInput.value < 10) qtyInput.value++;
+            });
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            document.getElementById('zoomTrigger').addEventListener('click', () => {
+                lightbox.style.display = "flex";
+                lightboxImg.src = mainImg.src;
+            });
+            document.querySelector('.close-lightbox').addEventListener('click', () => {
+                lightbox.style.display = "none";
+            });
+        }
+    </script>
 </body>
 </html>

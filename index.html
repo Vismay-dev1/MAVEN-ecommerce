@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MAVEN - Premium modern menswear. Elevated essentials for the contemporary man. Shop our curated collection of jackets, shirts, and accessories.">
+    <meta property="og:title" content="MAVEN | Modern Men's Fashion">
+    <meta property="og:description" content="Elevated essentials for the contemporary man. Modern design, premium quality.">
+    <meta property="og:type" content="website">
     <title>MAVEN | Modern Men's Fashion</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -20,17 +24,19 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">HOME</a></li>
-                    <li><a href="#">SHOP</a></li>
-                    <li><a href="#">COLLECTIONS</a></li>
-                    <li><a href="#">NEW ARRIVALS</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">CONTACT</a></li>
+                    <li><a href="#shop">SHOP</a></li>
+                    <li><a href="#categories">COLLECTIONS</a></li>
+                    <li><a href="#philosophy">ABOUT</a></li>
                 </ul>
             </nav>
             <div class="header-icons">
-                <a href="#" class="icon search-icon"><img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" alt="Search"></a>
-                <a href="#" class="icon account-icon"><img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account"></a>
-                <a href="#" class="icon cart-icon">
+                <a href="#" class="icon search-icon" aria-label="Search">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" alt="Search">
+                </a>
+                <a href="account.html" class="icon account-icon" aria-label="Account">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
+                </a>
+                <a href="cart.html" class="icon cart-icon" aria-label="Cart">
                     <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
                     <span class="cart-count">0</span>
                 </a>
@@ -38,345 +44,165 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=2070&auto=format&fit=crop')">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
+    <main>
+        <section class="hero">
+            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=2070&auto=format&fit=crop')">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="container">
+                    <span class="est fade-in">EST. 22</span>
+                    <h1 class="fade-in">MODERN // MINIMAL</h1>
+                    <p class="subheadline fade-in">ELEVATED ESSENTIALS FOR THE CONTEMPORARY MAN.</p>
+                    <a href="#shop" class="btn btn-primary fade-in">EXPLORE COLLECTION</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-collection" id="featured">
             <div class="container">
-                <span class="est">EST. 22</span>
-                <h1>MODERN // MINIMAL</h1>
-                <p class="subheadline">ELEVATED ESSENTIALS FOR THE CONTEMPORARY MAN.</p>
-                <a href="#" class="btn btn-primary">EXPLORE</a>
+                <div class="section-title">
+                    <h2>FEATURED // DROPS</h2>
+                    <p>Hand-picked selections from our latest release.</p>
+                </div>
+                <div class="featured-grid">
+                    <!-- Featured items will be injected by JS or hardcoded for now -->
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="featured-collection">
-        <div class="container">
-            <div class="featured-grid">
-                <div class="featured-item large">
-                    <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=1936&auto=format&fit=crop" alt="Premium Outerwear">
-                    <div class="item-info">
-                        <h3>PREMIUM OUTERWEAR</h3>
-                        <p>$199.00 - $450.00</p>
-                        <a href="#" class="btn btn-outline">EXPLORE</a>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?q=80&w=1974&auto=format&fit=crop" alt="The White Series">
-                    <div class="item-info">
-                        <h3>THE WHITE SERIES</h3>
-                        <p>$45.00 - $120.00</p>
-                        <a href="#" class="btn btn-outline">VIEW</a>
-                    </div>
-                </div>
-                <div class="featured-item">
-                    <img src="https://images.unsplash.com/photo-1516826957135-700dedea698c?q=80&w=1974&auto=format&fit=crop" alt="Signature Pants">
-                    <div class="item-info">
-                        <h3>SIGNATURE PANTS</h3>
-                        <p>$89.00 - $180.00</p>
-                        <a href="#" class="btn btn-outline">VIEW</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="categories">
-        <div class="container">
-            <div class="section-title">
-                <h2>THE UNIFORM // OF THE UNSEEN</h2>
-                <p>Our core collection featuring essential pieces for the modern man</p>
-            </div>
-            <div class="categories-grid">
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1935&auto=format&fit=crop" alt="Jackets">
-                    </div>
-                    <div class="category-info">
-                        <h3>JACKETS</h3>
-                        <p>Premium outerwear</p>
-                        <a href="#" class="explore-link">EXPLORE MORE →</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=1974&auto=format&fit=crop" alt="Shirts">
-                    </div>
-                    <div class="category-info">
-                        <h3>SHIRTS</h3>
-                        <p>Essential layers</p>
-                        <a href="#" class="explore-link">EXPLORE MORE →</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1473966968600-fa804b86d30b?q=80&w=1974&auto=format&fit=crop" alt="Pants">
-                    </div>
-                    <div class="category-info">
-                        <h3>PANTS</h3>
-                        <p>Modern fit</p>
-                        <a href="#" class="explore-link">EXPLORE MORE →</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=2070&auto=format&fit=crop" alt="Shorts">
-                    </div>
-                    <div class="category-info">
-                        <h3>SHORTS</h3>
-                        <p>Summer essentials</p>
-                        <a href="#" class="explore-link">EXPLORE MORE →</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=2080&auto=format&fit=crop" alt="Accessories">
-                    </div>
-                    <div class="category-info">
-                        <h3>ACCESSORIES</h3>
-                        <p>Finishing touches</p>
-                        <a href="#" class="explore-link">EXPLORE MORE →</a>
-                    </div>
-                </div>
-                <div class="category-card">
-                    <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop" alt="Footwear">
-                    </div>
-                    <div class="category-info">
-                        <h3>FOOTWEAR</h3>
-                        <p>Step forward</p>
-                        <a href="#" class="explore-link">EXPLORE MORE →</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="lookbook-section">
-        <div class="lookbook-image">
-            <img src="https://images.unsplash.com/photo-1534030347209-467a5b0ad3e6?q=80&w=1974&auto=format&fit=crop" alt="Campaign">
-        </div>
-        <div class="lookbook-overlay">
+        <section class="categories" id="categories">
             <div class="container">
-                <div class="lookbook-content">
-                    <h2>ARCHIVED // MOTION</h2>
-                    <p>Capturing the essence of movement through still form. Our latest campaign explores the intersection of functionality and high-end aesthetics in the urban landscape.</p>
-                    <button class="btn btn-primary">WATCH CAMPAIGN</button>
+                <div class="section-title">
+                    <h2>THE UNIFORM // OF THE UNSEEN</h2>
+                    <p>Our core collection featuring essential pieces for the modern man.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="product-showcase">
-        <div class="container">
-            <div class="section-title">
-                <h2>EVERYDAY // SELECTION</h2>
-            </div>
-
-            <div class="showcase-container">
-                <aside class="filters-sidebar">
-                    <div class="filter-group">
-                        <h4>CATEGORY</h4>
-                        <label><input type="checkbox"> Jackets</label>
-                        <label><input type="checkbox"> Shirts</label>
-                        <label><input type="checkbox"> Pants</label>
-                        <label><input type="checkbox"> Shorts</label>
-                        <label><input type="checkbox"> Accessories</label>
-                    </div>
-
-                    <div class="filter-group">
-                        <h4>SIZE</h4>
-                        <label><input type="checkbox"> XS</label>
-                        <label><input type="checkbox"> S</label>
-                        <label><input type="checkbox"> M</label>
-                        <label><input type="checkbox"> L</label>
-                        <label><input type="checkbox"> XL</label>
-                    </div>
-
-                    <div class="filter-group">
-                        <h4>PRICE RANGE</h4>
-                        <input type="range" min="0" max="500">
-                        <p>$0 - $500</p>
-                    </div>
-
-                    <div class="filter-group">
-                        <h4>SEASON</h4>
-                        <label><input type="checkbox"> Summer Wear</label>
-                        <label><input type="checkbox"> Winter Wear</label>
-                        <label><input type="checkbox"> All-Year</label>
-                    </div>
-                </aside>
-
-                <main class="product-main">
-                    <div class="sort-options">
-                        <label>Sort by:</label>
-                        <select>
-                            <option>Newest First</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Best Sellers</option>
-                        </select>
-                    </div>
-
-                    <div class="product-grid">
-                        <div class="product-card">
-                            <div class="product-image-container">
-                                <a href="product.html">
-                                    <img src="https://images.unsplash.com/photo-1550246140-5119ae4790b8?q=80&w=2070&auto=format&fit=crop" alt="Premium Wool Jacket">
-                                </a>
-                                <div class="product-badge">NEW</div>
-                            </div>
-                            <div class="product-info">
-                                <h4 class="product-name">Premium Wool Jacket</h4>
-                                <p class="product-category">Jackets</p>
-                                <div class="product-price">
-                                    <span class="price">$189.99</span>
-                                    <span class="original-price">$249.99</span>
-                                </div>
-                                <div class="product-colors">
-                                    <span class="color-dot" style="background: black;"></span>
-                                    <span class="color-dot" style="background: #4a4a4a;"></span>
-                                    <span class="color-dot" style="background: #8B4513;"></span>
-                                </div>
-                                <button class="add-to-cart-btn">ADD TO CART</button>
-                            </div>
+                <div class="categories-grid">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1935&auto=format&fit=crop" alt="Jackets">
                         </div>
-
-                        <div class="product-card">
-                            <div class="product-image-container">
-                                <a href="product.html">
-                                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1976&auto=format&fit=crop" alt="Oxford Cotton Shirt">
-                                </a>
-                            </div>
-                            <div class="product-info">
-                                <h4 class="product-name">Oxford Cotton Shirt</h4>
-                                <p class="product-category">Shirts</p>
-                                <div class="product-price">
-                                    <span class="price">$79.99</span>
-                                </div>
-                                <div class="product-colors">
-                                    <span class="color-dot" style="background: white; border: 1px solid #ddd;"></span>
-                                    <span class="color-dot" style="background: #add8e6;"></span>
-                                </div>
-                                <button class="add-to-cart-btn">ADD TO CART</button>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image-container">
-                                <a href="product.html">
-                                    <img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=1974&auto=format&fit=crop" alt="Tapered Chinos">
-                                </a>
-                            </div>
-                            <div class="product-info">
-                                <h4 class="product-name">Tapered Chinos</h4>
-                                <p class="product-category">Pants</p>
-                                <div class="product-price">
-                                    <span class="price">$110.00</span>
-                                </div>
-                                <div class="product-colors">
-                                    <span class="color-dot" style="background: #c2b280;"></span>
-                                    <span class="color-dot" style="background: black;"></span>
-                                    <span class="color-dot" style="background: #000080;"></span>
-                                </div>
-                                <button class="add-to-cart-btn">ADD TO CART</button>
-                            </div>
-                        </div>
-
-                        <div class="product-card">
-                            <div class="product-image-container">
-                                <a href="product.html">
-                                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=2127&auto=format&fit=crop" alt="Minimalist Tee">
-                                </a>
-                                <div class="product-badge">SALE</div>
-                            </div>
-                            <div class="product-info">
-                                <h4 class="product-name">Minimalist Tee</h4>
-                                <p class="product-category">Shirts</p>
-                                <div class="product-price">
-                                    <span class="price">$35.00</span>
-                                    <span class="original-price">$45.00</span>
-                                </div>
-                                <div class="product-colors">
-                                    <span class="color-dot" style="background: black;"></span>
-                                    <span class="color-dot" style="background: white; border: 1px solid #ddd;"></span>
-                                    <span class="color-dot" style="background: gray;"></span>
-                                </div>
-                                <button class="add-to-cart-btn">ADD TO CART</button>
-                            </div>
+                        <div class="category-info">
+                            <h3>JACKETS</h3>
+                            <p>Premium outerwear</p>
+                            <a href="#" class="explore-link">EXPLORE MORE →</a>
                         </div>
                     </div>
-                </main>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2>TRUSTED BY // ROUTINE</h2>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" alt="Customer">
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=1974&auto=format&fit=crop" alt="Shirts">
+                        </div>
+                        <div class="category-info">
+                            <h3>SHIRTS</h3>
+                            <p>Essential layers</p>
+                            <a href="#" class="explore-link">EXPLORE MORE →</a>
+                        </div>
                     </div>
-                    <div class="testimonial-content">
-                        <h4>DAVID CHEN</h4>
-                        <p class="testimonial-text">"MAVEN has completely redefined my wardrobe. The quality of the wool jacket is unmatched, and it fits perfectly into my professional and casual life."</p>
-                        <p class="customer-role">Architect</p>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" alt="Customer">
-                    </div>
-                    <div class="testimonial-content">
-                        <h4>MARCUS REED</h4>
-                        <p class="testimonial-text">"I appreciate the minimalist approach. No loud logos, just pure quality and great silhouettes. The 'Uniform of the Unseen' is my daily go-to."</p>
-                        <p class="customer-role">Creative Director</p>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-image">
-                        <img src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop" alt="Customer">
-                    </div>
-                    <div class="testimonial-content">
-                        <h4>ALEX RIVERA</h4>
-                        <p class="testimonial-text">"Fast shipping and incredible packaging. It's rare to find a brand that cares as much about the experience as they do about the product."</p>
-                        <p class="customer-role">Software Engineer</p>
+                    <div class="category-card">
+                        <div class="category-image">
+                            <img src="https://images.unsplash.com/photo-1473966968600-fa804b86d30b?q=80&w=1974&auto=format&fit=crop" alt="Pants">
+                        </div>
+                        <div class="category-info">
+                            <h3>PANTS</h3>
+                            <p>Modern fit</p>
+                            <a href="#" class="explore-link">EXPLORE MORE →</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="philosophy-section">
-        <div class="philosophy-overlay"></div>
-        <div class="philosophy-content">
+        <section class="shop-section" id="shop">
             <div class="container">
-                <h2>QUIET // DESIGN</h2>
-                <p>We believe in the power of simplicity. Our designs speak through quality, not noise. Every stitch is intentional, every fabric is chosen for its longevity and feel.</p>
-                <button class="btn btn-primary">READ OUR STORY</button>
-            </div>
-        </div>
-    </section>
+                <div class="section-title">
+                    <h2>EVERYDAY // SELECTION</h2>
+                </div>
+                <div class="showcase-container">
+                    <aside class="filters-sidebar">
+                        <div class="filter-group">
+                            <h4>CATEGORY</h4>
+                            <div class="filter-options" id="categoryFilters">
+                                <label><input type="checkbox" value="Jackets"> Jackets</label>
+                                <label><input type="checkbox" value="Shirts"> Shirts</label>
+                                <label><input type="checkbox" value="Pants"> Pants</label>
+                                <label><input type="checkbox" value="Shorts"> Shorts</label>
+                                <label><input type="checkbox" value="Accessories"> Accessories</label>
+                            </div>
+                        </div>
 
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-container">
-                <h3>STAY UPDATED</h3>
-                <p>Get exclusive drops, style tips, and 10% off your first order</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">SUBSCRIBE</button>
-                </form>
-                <p class="privacy-text">We respect your privacy. Unsubscribe anytime.</p>
+                        <div class="filter-group">
+                            <h4>SIZE</h4>
+                            <div class="filter-options" id="sizeFilters">
+                                <label><input type="checkbox" value="XS"> XS</label>
+                                <label><input type="checkbox" value="S"> S</label>
+                                <label><input type="checkbox" value="M"> M</label>
+                                <label><input type="checkbox" value="L"> L</label>
+                                <label><input type="checkbox" value="XL"> XL</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>PRICE RANGE</h4>
+                            <input type="range" id="priceRange" min="0" max="500" step="10" value="500">
+                            <p id="priceLabel">$0 - $500</p>
+                        </div>
+                    </aside>
+
+                    <div class="product-main">
+                        <div class="sort-options">
+                            <label for="sortSelect">Sort by:</label>
+                            <select id="sortSelect">
+                                <option value="newest">Newest First</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                        </div>
+
+                        <div class="product-grid" id="mainProductGrid">
+                            <!-- Products will be injected by JS -->
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="philosophy-section" id="philosophy">
+            <div class="philosophy-overlay"></div>
+            <div class="philosophy-content">
+                <div class="container">
+                    <h2>QUIET // DESIGN</h2>
+                    <p>We believe in the power of simplicity. Our designs speak through quality, not noise. Every stitch is intentional, every fabric is chosen for its longevity and feel.</p>
+                    <button class="btn btn-primary">READ OUR STORY</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>TRUSTED BY // ROUTINE</h2>
+                </div>
+                <div class="testimonials-grid" id="testimonialGrid">
+                    <!-- Testimonials -->
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-container">
+                    <h3>STAY UPDATED</h3>
+                    <p>Get exclusive drops, style tips, and 10% off your first order</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
+                    </form>
+                    <p class="privacy-text">We respect your privacy. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="container">
