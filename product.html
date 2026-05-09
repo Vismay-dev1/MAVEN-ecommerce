@@ -33,6 +33,9 @@
                     <img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search">
                     <input type="text" id="searchInput" placeholder="Search...">
                 </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/moon-symbol.png" alt="Dark Mode">
+                </button>
                 <a href="account.html" class="icon account-icon" aria-label="Account">
                     <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
                 </a>
@@ -65,7 +68,7 @@
                 </div>
                 <div class="tab-content" id="shipping">
                     <h4>Shipping Information</h4>
-                    <p>Free standard shipping on orders over $150. Estimated delivery: 3-5 business days.</p>
+                    <p>Free standard shipping on orders over ₹5,000. Estimated delivery: 3-5 business days.</p>
                     <h4 style="margin-top: 20px;">Returns & Exchanges</h4>
                     <p>We offer a 30-day return policy for all unworn items in their original packaging.</p>
                 </div>
@@ -211,8 +214,8 @@
                         <p class="product-brand">MAVEN CORE</p>
                         <h1 class="product-title">${product.name}</h1>
                         <div class="price-section">
-                            <span class="current-price">$${product.price.toFixed(2)}</span>
-                            ${product.originalPrice > product.price ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span><span class="discount-badge">-${Math.round((1 - product.price/product.originalPrice)*100)}%</span>` : ''}
+                            <span class="current-price">₹${product.price.toLocaleString('en-IN')}</span>
+                            ${product.originalPrice > product.price ? `<span class="original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span><span class="discount-badge">-${Math.round((1 - product.price/product.originalPrice)*100)}%</span>` : ''}
                         </div>
                         <div class="rating-section">
                             <div class="stars">${renderStars(product.rating)}</div>
@@ -250,7 +253,7 @@
                 related.forEach(p => {
                     const card = document.createElement('div');
                     card.className = 'product-card';
-                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">$${p.price.toFixed(2)}</p></div>`;
+                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">₹${p.price.toLocaleString('en-IN')}</p></div>`;
                     relatedGrid.appendChild(card);
                 });
 
@@ -299,7 +302,7 @@
                 if (p) {
                     const card = document.createElement('div');
                     card.className = 'product-card';
-                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">$${p.price.toFixed(2)}</p></div>`;
+                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">₹${p.price.toLocaleString('en-IN')}</p></div>`;
                     grid.appendChild(card);
                 }
             });

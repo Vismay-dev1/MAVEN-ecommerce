@@ -21,6 +21,9 @@
             </nav>
             <div class="header-icons">
                 <div class="search-container"><img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search"><input type="text" id="searchInput" placeholder="Search..."></div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Dark Mode">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/moon-symbol.png" alt="Dark Mode">
+                </button>
                 <a href="account.html" class="icon account-icon"><img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account"></a>
                 <a href="cart.html" class="icon cart-icon"><img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart"><span class="cart-count">0</span></a>
             </div>
@@ -42,7 +45,7 @@
                 <div class="order-summary">
                     <h3>ORDER SUMMARY</h3>
                     <div class="summary-details">
-                        <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+                        <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
                         <div class="summary-row"><span>Shipping</span><span id="cartShipping">FREE</span></div>
                         <div class="summary-row">
                             <div style="width: 100%;">
@@ -54,7 +57,7 @@
                                 <p id="couponMessage" style="font-size: 11px; margin-top: 5px;"></p>
                             </div>
                         </div>
-                        <div class="summary-row total"><span>TOTAL</span><span id="cartTotal">$0.00</span></div>
+                        <div class="summary-row total"><span>TOTAL</span><span id="cartTotal">₹0</span></div>
                         <p style="font-size: 12px; color: var(--light-gray); margin-top: 10px;">Estimated Delivery: <span id="deliveryDate" style="color: var(--primary-black); font-weight: 600;"></span></p>
                     </div>
                     <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: var(--space-l);">CHECKOUT</a>
@@ -79,7 +82,7 @@
     <script src="script.js"></script>
     <script>
         let discount = 0;
-        const FREE_SHIPPING_LIMIT = 150;
+        const FREE_SHIPPING_LIMIT = 5000;
 
         document.addEventListener('DOMContentLoaded', () => {
             renderCart();
@@ -117,7 +120,7 @@
                     <div class="cart-item-info">
                         <h4>${item.name}</h4>
                         <p style="font-size: 12px; color: var(--light-gray);">${item.selectedSize} / ${item.selectedColor}</p>
-                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                        <div class="cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
                         ${item.quantity_available < 5 ? `<p style="color: var(--accent-red); font-size: 11px; font-weight: 700;">ONLY ${item.quantity_available || 3} LEFT IN STOCK!</p>` : ''}
                         <div class="cart-item-actions">
                             <div class="quantity-selector">
@@ -133,7 +136,7 @@
             });
 
             if (subtotal < FREE_SHIPPING_LIMIT) {
-                thresholdContainer.innerHTML = `Add <strong>$${(FREE_SHIPPING_LIMIT - subtotal).toFixed(2)}</strong> more to your cart for <strong>FREE SHIPPING</strong>`;
+                thresholdContainer.innerHTML = `Add <strong>₹${(FREE_SHIPPING_LIMIT - subtotal).toLocaleString('en-IN')}</strong> more to your cart for <strong>FREE SHIPPING</strong>`;
             } else {
                 thresholdContainer.innerHTML = `Congrats! You've unlocked <strong>FREE SHIPPING</strong>`;
             }
@@ -178,12 +181,12 @@
         function updateSummary(subtotal) {
             const discountAmount = subtotal * discount;
             const discountedSubtotal = subtotal - discountAmount;
-            const shippingCost = discountedSubtotal >= FREE_SHIPPING_LIMIT ? 0 : 15;
+            const shippingCost = discountedSubtotal >= FREE_SHIPPING_LIMIT ? 0 : 500;
             const total = discountedSubtotal + shippingCost;
 
-            document.getElementById('cartSubtotal').textContent = `$${discountedSubtotal.toFixed(2)}`;
-            document.getElementById('cartShipping').textContent = shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`;
-            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cartSubtotal').textContent = `₹${discountedSubtotal.toLocaleString('en-IN')}`;
+            document.getElementById('cartShipping').textContent = shippingCost === 0 ? 'FREE' : `₹${shippingCost.toLocaleString('en-IN')}`;
+            document.getElementById('cartTotal').textContent = `₹${total.toLocaleString('en-IN')}`;
         }
     </script>
 </body>
