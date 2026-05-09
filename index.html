@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <div class="container nav-container">
-            <div class="mobile-menu-btn">
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -21,7 +21,7 @@
             <div class="logo">
                 <a href="index.html">MAVEN</a>
             </div>
-            <nav class="main-nav">
+            <nav class="main-nav" id="mainNav">
                 <ul>
                     <li><a href="index.html">HOME</a></li>
                     <li><a href="#shop">SHOP</a></li>
@@ -30,9 +30,10 @@
                 </ul>
             </nav>
             <div class="header-icons">
-                <a href="#" class="icon search-icon" aria-label="Search">
-                    <img src="https://img.icons8.com/material-outlined/24/000000/search--v1.png" alt="Search">
-                </a>
+                <div class="search-container">
+                    <img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                </div>
                 <a href="account.html" class="icon account-icon" aria-label="Account">
                     <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
                 </a>
@@ -146,6 +147,16 @@
                             <input type="range" id="priceRange" min="0" max="500" step="10" value="500">
                             <p id="priceLabel">$0 - $500</p>
                         </div>
+
+                        <div class="filter-group">
+                            <h4>SEASON</h4>
+                            <div class="filter-options" id="seasonFilters">
+                                <label><input type="checkbox" value="Spring"> Spring</label>
+                                <label><input type="checkbox" value="Summer"> Summer</label>
+                                <label><input type="checkbox" value="Fall"> Fall</label>
+                                <label><input type="checkbox" value="Winter"> Winter</label>
+                            </div>
+                        </div>
                     </aside>
 
                     <div class="product-main">
@@ -204,6 +215,13 @@
         </section>
     </main>
 
+    <div id="quickViewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="quickViewBody"></div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-container">
@@ -220,9 +238,9 @@
                 <div class="footer-column">
                     <h4>SHOP</h4>
                     <ul>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Collections</a></li>
-                        <li><a href="#">Sale</a></li>
+                        <li><a href="#shop">New Arrivals</a></li>
+                        <li><a href="#categories">Collections</a></li>
+                        <li><a href="#shop">Sale</a></li>
                         <li><a href="#">Gift Cards</a></li>
                     </ul>
                 </div>

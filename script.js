@@ -644,6 +644,20 @@ function debounce(func, wait) {
     };
 }
 
+// Throttle helper
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
 // Helper to render stars
 function renderStars(rating) {
     const fullStars = Math.floor(rating);
@@ -656,6 +670,7 @@ function renderStars(rating) {
 let currentFilters = {
     category: [],
     size: [],
+    season: [],
     price: 500,
     sort: 'newest'
 };
@@ -675,6 +690,7 @@ function renderProducts(productsToRender) {
                 </a>
                 ${product.isNew ? '<div class="product-badge">NEW</div>' : ''}
                 ${product.isSale && !product.isNew ? '<div class="product-badge">SALE</div>' : ''}
+                <div class="quick-view-overlay" onclick="openQuickView(${product.id})">QUICK VIEW</div>
             </div>
             <div class="product-info">
                 <p class="product-category">${product.category}</p>
@@ -697,8 +713,9 @@ function applyFilters() {
     let filtered = products.filter(p => {
         const catMatch = currentFilters.category.length === 0 || currentFilters.category.includes(p.category);
         const sizeMatch = currentFilters.size.length === 0 || p.sizes.some(s => currentFilters.size.includes(s));
+        const seasonMatch = currentFilters.season.length === 0 || p.season.some(s => currentFilters.season.includes(s));
         const priceMatch = p.price <= currentFilters.price;
-        return catMatch && sizeMatch && priceMatch;
+        return catMatch && sizeMatch && seasonMatch && priceMatch;
     });
 
     // Apply sorting
@@ -715,15 +732,34 @@ function applyFilters() {
     renderProducts(filtered);
 }
 
-function addToCart(productId) {
+function addToCart(productId, size = null, color = null) {
     const product = products.find(p => p.id === productId);
     let cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
-    const existing = cart.find(item => item.id === productId);
+
+    // If not specified, try to get from UI (for product page)
+    if (!size) {
+        const activeSize = document.querySelector('.size-btn.active');
+        size = activeSize ? activeSize.getAttribute('data-size') : (product.sizes[0] || 'OS');
+    }
+    if (!color) {
+        const activeColor = document.querySelector('.color-btn.active');
+        color = activeColor ? activeColor.getAttribute('data-color') : (product.colors[0] || 'Default');
+    }
+
+    const qtyInput = document.getElementById('quantity');
+    const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+
+    const existing = cart.find(item => item.id === productId && item.selectedSize === size && item.selectedColor === color);
 
     if (existing) {
-        existing.quantity += 1;
+        existing.quantity += quantity;
     } else {
-        cart.push({ ...product, quantity: 1 });
+        cart.push({
+            ...product,
+            quantity: quantity,
+            selectedSize: size,
+            selectedColor: color
+        });
     }
 
     localStorage.setItem('maven_cart', JSON.stringify(cart));
@@ -770,10 +806,46 @@ function showToast(message) {
     }, 3000);
 }
 
+function openQuickView(productId) {
+    const product = products.find(p => p.id === productId);
+    const modal = document.getElementById('quickViewModal');
+    const body = document.getElementById('quickViewBody');
+    if (!modal || !product) return;
+
+    body.innerHTML = `
+        <div class="product-detail-grid" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 0;">
+            <div class="main-image-container">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info-panel">
+                <p class="product-brand">MAVEN CORE</p>
+                <h2 style="font-size: 24px; margin-bottom: 10px;">${product.name}</h2>
+                <div class="product-price" style="margin-bottom: 20px;">$${product.price.toFixed(2)}</div>
+                <p class="product-description" style="font-size: 14px; margin-bottom: 20px;">${product.description.substring(0, 150)}...</p>
+                <a href="product.html?id=${product.id}" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW FULL DETAILS</a>
+                <button class="btn btn-primary" style="width: 100%;" onclick="addToCart(${product.id})">ADD TO CART</button>
+            </div>
+        </div>
+    `;
+    modal.style.display = 'flex';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initial Render
     renderProducts(products);
     updateCartCount();
+
+    // Scroll handling for sticky header
+    window.addEventListener('scroll', throttle(() => {
+        const header = document.querySelector('.header');
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            if (!document.title.includes('Product Detail') && !document.title.includes('Shopping Cart') && !document.title.includes('Checkout') && !document.title.includes('My Account')) {
+                header.classList.remove('scrolled');
+            }
+        }
+    }, 100));
 
     // Search Functionality
     const searchInput = document.getElementById('searchInput');
@@ -806,6 +878,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const seasonFilters = document.querySelectorAll('#seasonFilters input');
+    seasonFilters.forEach(input => {
+        input.addEventListener('change', () => {
+            if (input.checked) currentFilters.season.push(input.value);
+            else currentFilters.season = currentFilters.season.filter(s => s !== input.value);
+            applyFilters();
+        });
+    });
+
     const sizeFilters = document.querySelectorAll('#sizeFilters input');
     sizeFilters.forEach(input => {
         input.addEventListener('change', () => {
@@ -830,6 +911,16 @@ document.addEventListener('DOMContentLoaded', () => {
         sortSelect.addEventListener('change', (e) => {
             currentFilters.sort = e.target.value;
             applyFilters();
+        });
+    }
+
+    // Modal Close
+    const modal = document.getElementById('quickViewModal');
+    const closeModal = document.querySelector('.close-modal');
+    if (modal && closeModal) {
+        closeModal.addEventListener('click', () => modal.style.display = 'none');
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) modal.style.display = 'none';
         });
     }
 
@@ -879,18 +970,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            // Only remove if not on product page (where it's always scrolled)
-            if (!document.title.includes('MAVEN | Modern')) {
-                header.classList.remove('scrolled');
-            }
-        }
-    });
 
     // Mobile menu toggle
     const menuBtn = document.getElementById('mobileMenuBtn');

@@ -56,6 +56,12 @@
                                 <div class="form-group"><label for="expiryDate">Expiry Date</label><input type="text" id="expiryDate" placeholder="MM/YY" required></div>
                                 <div class="form-group"><label for="cvv">CVV</label><input type="password" id="cvv" placeholder="XXX" required></div>
                             </div>
+                            <div class="security-badges" style="margin-top: 20px; display: flex; gap: 20px; align-items: center; opacity: 0.6;">
+                                <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" width="30">
+                                <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard" width="30">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="SSL" width="20">
+                                <span style="font-size: 10px; font-weight: 700;">SECURE SSL ENCRYPTION</span>
+                            </div>
                             <div class="step-actions">
                                 <button type="button" class="btn btn-outline prev-step">BACK</button>
                                 <button type="button" class="btn btn-primary next-step">REVIEW ORDER</button>
@@ -143,6 +149,13 @@
             const indicators = document.querySelectorAll('.step');
             const summaryItems = document.getElementById('summaryItems');
             const cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
+            const discount = parseFloat(localStorage.getItem('maven_discount')) || 0;
+
+            if (cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+
             let subtotal = 0;
             cart.forEach(item => {
                 subtotal += item.price * item.quantity;
@@ -151,12 +164,13 @@
                 div.innerHTML = `<span>${item.name} x ${item.quantity}</span><span>$${(item.price * item.quantity).toFixed(2)}</span>`;
                 summaryItems.appendChild(div);
             });
-            document.getElementById('summarySubtotal').textContent = `$${subtotal.toFixed(2)}`;
+            const discountedSubtotal = subtotal * (1 - discount);
+            document.getElementById('summarySubtotal').textContent = `$${discountedSubtotal.toFixed(2)}`;
             updateTotal();
             function updateTotal() {
                 const shipping = parseFloat(document.querySelector('input[name="shipping"]:checked').value);
                 document.getElementById('summaryShipping').textContent = shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`;
-                document.getElementById('summaryTotal').textContent = `$${(subtotal + shipping).toFixed(2)}`;
+                document.getElementById('summaryTotal').textContent = `$${(discountedSubtotal + shipping).toFixed(2)}`;
             }
             document.querySelectorAll('input[name="shipping"]').forEach(input => {
                 input.addEventListener('change', updateTotal);
@@ -191,6 +205,9 @@
                         }
                     });
                     if (valid) {
+            if (currentStep === 3) {
+                renderReview();
+            }
                         steps[currentStep-1].classList.remove('active');
                         indicators[currentStep-1].classList.remove('active');
                         currentStep++;
@@ -199,6 +216,25 @@
                     }
                 });
             });
+
+function renderReview() {
+    const reviewContent = document.getElementById('orderReviewContent');
+    const shipping = document.querySelector('input[name="shipping"]:checked').parentElement.querySelector('.option-name').textContent;
+    const email = document.getElementById('email').value;
+    const address = `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}, ${document.getElementById('address').value}, ${document.getElementById('city').value}, ${document.getElementById('zipCode').value}`;
+
+    reviewContent.innerHTML = `
+        <div style="background: var(--bg-light); padding: var(--space-l); margin-bottom: var(--space-l);">
+            <h4 style="margin-bottom: 10px;">SHIPPING TO:</h4>
+            <p style="font-size: 14px;">${address}</p>
+            <p style="font-size: 14px; margin-top: 5px;">Email: ${email}</p>
+        </div>
+        <div style="background: var(--bg-light); padding: var(--space-l); margin-bottom: var(--space-l);">
+            <h4 style="margin-bottom: 10px;">SHIPPING METHOD:</h4>
+            <p style="font-size: 14px;">${shipping}</p>
+        </div>
+    `;
+}
             document.querySelectorAll('.prev-step').forEach(btn => {
                 btn.addEventListener('click', () => {
                     steps[currentStep-1].classList.remove('active');
@@ -211,6 +247,7 @@
             document.getElementById('checkoutForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 localStorage.removeItem('maven_cart');
+                localStorage.removeItem('maven_discount');
                 alert('Order placed successfully!');
                 window.location.href = 'index.html';
             });
