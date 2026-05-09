@@ -8,9 +8,7 @@
 
 A modern, fully-responsive, feature-rich e-commerce platform specializing in premium men's fashion. Built with vanilla HTML, CSS, and JavaScript for optimal performance and accessibility.
 
-**Live Demo:** [View Live](https://github.com/Vismay-dev1/MAVEN-ecommerce.git)  
-**Repository:** [GitHub](https://github.com/Vismay-dev1/MAVEN-ecommerce)  
-**Author:** [Vismay Vinod](https://github.com/Vismay-dev1)
+
 
 ---
 
@@ -770,13 +768,3 @@ If you found this project helpful, please consider:
 - ⭐ Starring the repository
 - 🐦 Sharing on social media
 - 💬 Providing feedback
-- 🤝 Contributing improvements
-- 📢 Recommending to others
-
----
-
-**Built with ❤️ by [Vismay Vinod](https://github.com/Vismay-dev1)**
-
----
-
-*Made with ❤️ for the web development community*
