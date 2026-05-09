@@ -2,6 +2,8 @@
 
 MAVEN is a premium, minimalist e-commerce platform modernized for a seamless shopping experience.
 
+WEBSITE : https://vismay-dev1.github.io/MAVEN-ecommerce/
+
 ## Features
 
 - **Modernized UI/UX**: Clean, high-end aesthetic using Montserrat and Playfair Display typography.
