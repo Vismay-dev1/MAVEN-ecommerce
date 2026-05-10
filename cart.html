@@ -13,7 +13,7 @@
             <div class="logo"><a href="index.html">MAVEN</a></div>
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html#home">HOME</a></li>
                     <li><a href="index.html#shop">SHOP</a></li>
                     <li><a href="index.html#categories">COLLECTIONS</a></li>
                     <li><a href="index.html#philosophy">ABOUT</a></li>
@@ -22,10 +22,32 @@
             <div class="header-icons">
                 <div class="search-container"><img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search"><input type="text" id="searchInput" placeholder="Search..."></div>
                 <a href="account.html" class="icon account-icon"><img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account"></a>
-                <a href="cart.html" class="icon cart-icon"><img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart"><span class="cart-count">0</span></a>
+                <div class="icon cart-icon" id="cartIconTrigger" aria-label="Cart" onclick="openCartDrawer()">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
+                    <span class="cart-count">0</span>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Cart Drawer (for consistency) -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3>YOUR CART</h3>
+            <span class="close-cart" onclick="closeCartDrawer()">&times;</span>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems"></div>
+        <div class="cart-drawer-footer">
+            <div class="summary-row" style="margin-bottom: 15px; font-weight: 700;">
+                <span>SUBTOTAL</span>
+                <span id="cartDrawerTotal">₹0</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-bottom: 20px;">FREE delivery on orders above ₹3,000</p>
+            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW CART</a>
+            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">CHECKOUT</a>
+        </div>
+    </div>
 
     <div class="breadcrumb"><div class="container"><p><a href="index.html">Home</a> / Shopping Cart</p></div></div>
 
@@ -42,19 +64,19 @@
                 <div class="order-summary">
                     <h3>ORDER SUMMARY</h3>
                     <div class="summary-details">
-                        <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+                        <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
                         <div class="summary-row"><span>Shipping</span><span id="cartShipping">FREE</span></div>
                         <div class="summary-row">
                             <div style="width: 100%;">
                                 <label style="font-size: 12px; font-weight: 700; display: block; margin-bottom: 5px;">PROMO CODE</label>
                                 <div style="display: flex; gap: 10px;">
-                                    <input type="text" id="couponCode" placeholder="Enter code" style="flex: 1; padding: 8px; border: 1px solid var(--border-gray);">
+                                    <input type="text" id="couponCode" placeholder="Enter code" style="flex: 1; padding: 8px; border: 1px solid var(--border-color);">
                                     <button class="btn btn-primary" style="padding: 8px 15px; font-size: 10px;" onclick="applyCoupon()">APPLY</button>
                                 </div>
                                 <p id="couponMessage" style="font-size: 11px; margin-top: 5px;"></p>
                             </div>
                         </div>
-                        <div class="summary-row total"><span>TOTAL</span><span id="cartTotal">$0.00</span></div>
+                        <div class="summary-row total"><span>TOTAL</span><span id="cartTotal">₹0</span></div>
                         <p style="font-size: 12px; color: var(--light-gray); margin-top: 10px;">Estimated Delivery: <span id="deliveryDate" style="color: var(--primary-black); font-weight: 600;"></span></p>
                     </div>
                     <a href="checkout.html" class="btn btn-primary" style="width: 100%; margin-top: var(--space-l);">CHECKOUT</a>
@@ -67,19 +89,57 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-container">
-                <div class="footer-column"><h4>ABOUT</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Our Story</a></li></ul></div>
-                <div class="footer-column"><h4>SHOP</h4><ul><li><a href="index.html#shop">New Arrivals</a></li><li><a href="index.html#categories">Collections</a></li></ul></div>
-                <div class="footer-column"><h4>SUPPORT</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping Info</a></li></ul></div>
-                <div class="footer-column"><h4>FOLLOW</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li></ul></div>
+                <div class="footer-column">
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SHOP</h4>
+                    <ul>
+                        <li><a href="index.html#shop">New Arrivals</a></li>
+                        <li><a href="index.html#categories">Collections</a></li>
+                        <li><a href="index.html#shop">Sale</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>FOLLOW</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter/X</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2024 MAVEN. All rights reserved.</p></div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MAVEN. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
         let discount = 0;
-        const FREE_SHIPPING_LIMIT = 150;
+        const FREE_SHIPPING_LIMIT = 3000;
 
         document.addEventListener('DOMContentLoaded', () => {
             renderCart();
@@ -89,7 +149,7 @@
         function setDeliveryDate() {
             const date = new Date();
             date.setDate(date.getDate() + 5);
-            document.getElementById('deliveryDate').textContent = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            document.getElementById('deliveryDate').textContent = date.toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' });
         }
 
         function renderCart() {
@@ -116,9 +176,9 @@
                     <div class="cart-item-image"><img src="${item.image}" alt="${item.name}"></div>
                     <div class="cart-item-info">
                         <h4>${item.name}</h4>
-                        <p style="font-size: 12px; color: var(--light-gray);">${item.selectedSize} / ${item.selectedColor}</p>
-                        <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                        ${item.quantity_available < 5 ? `<p style="color: var(--accent-red); font-size: 11px; font-weight: 700;">ONLY ${item.quantity_available || 3} LEFT IN STOCK!</p>` : ''}
+                        <p style="font-size: 12px; color: var(--text-light);">${item.selectedSize} / ${item.selectedColor}</p>
+                        <div class="cart-item-price">${formatPrice(item.price)}</div>
+                        ${item.quantity_available < 5 ? `<p style="color: var(--error); font-size: 11px; font-weight: 700;">ONLY ${item.quantity_available} LEFT IN STOCK!</p>` : ''}
                         <div class="cart-item-actions">
                             <div class="quantity-selector">
                                 <button class="qty-btn" onclick="updateQuantity(${index}, -1)">−</button>
@@ -133,7 +193,7 @@
             });
 
             if (subtotal < FREE_SHIPPING_LIMIT) {
-                thresholdContainer.innerHTML = `Add <strong>$${(FREE_SHIPPING_LIMIT - subtotal).toFixed(2)}</strong> more to your cart for <strong>FREE SHIPPING</strong>`;
+                thresholdContainer.innerHTML = `Add <strong>${formatPrice(FREE_SHIPPING_LIMIT - subtotal)}</strong> more to your cart for <strong>FREE SHIPPING</strong>`;
             } else {
                 thresholdContainer.innerHTML = `Congrats! You've unlocked <strong>FREE SHIPPING</strong>`;
             }
@@ -148,14 +208,15 @@
                 discount = 0.10;
                 localStorage.setItem('maven_discount', '0.10');
                 msg.textContent = '10% discount applied!';
-                msg.style.color = 'var(--success-green)';
+                msg.style.color = 'var(--success)';
             } else {
                 discount = 0;
                 localStorage.removeItem('maven_discount');
                 msg.textContent = 'Invalid coupon code.';
-                msg.style.color = 'var(--accent-red)';
+                msg.style.color = 'var(--error)';
             }
             renderCart();
+            renderCartDrawer();
         }
 
         function updateQuantity(index, delta) {
@@ -165,6 +226,7 @@
             localStorage.setItem('maven_cart', JSON.stringify(cart));
             renderCart();
             updateCartCount();
+            renderCartDrawer();
         }
 
         function removeItem(index) {
@@ -173,17 +235,18 @@
             localStorage.setItem('maven_cart', JSON.stringify(cart));
             renderCart();
             updateCartCount();
+            renderCartDrawer();
         }
 
         function updateSummary(subtotal) {
             const discountAmount = subtotal * discount;
             const discountedSubtotal = subtotal - discountAmount;
-            const shippingCost = discountedSubtotal >= FREE_SHIPPING_LIMIT ? 0 : 15;
+            const shippingCost = discountedSubtotal >= FREE_SHIPPING_LIMIT ? 0 : 500;
             const total = discountedSubtotal + shippingCost;
 
-            document.getElementById('cartSubtotal').textContent = `$${discountedSubtotal.toFixed(2)}`;
-            document.getElementById('cartShipping').textContent = shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`;
-            document.getElementById('cartTotal').textContent = `$${total.toFixed(2)}`;
+            document.getElementById('cartSubtotal').textContent = formatPrice(discountedSubtotal);
+            document.getElementById('cartShipping').textContent = shippingCost === 0 ? 'FREE' : formatPrice(shippingCost);
+            document.getElementById('cartTotal').textContent = formatPrice(total);
         }
     </script>
 </body>

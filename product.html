@@ -22,7 +22,7 @@
             </div>
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="index.html#home">HOME</a></li>
                     <li><a href="index.html#shop">SHOP</a></li>
                     <li><a href="index.html#categories">COLLECTIONS</a></li>
                     <li><a href="index.html#philosophy">ABOUT</a></li>
@@ -36,13 +36,32 @@
                 <a href="account.html" class="icon account-icon" aria-label="Account">
                     <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
                 </a>
-                <a href="cart.html" class="icon cart-icon" aria-label="Cart">
+                <div class="icon cart-icon" id="cartIconTrigger" aria-label="Cart" onclick="openCartDrawer()">
                     <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
                     <span class="cart-count">0</span>
-                </a>
+                </div>
             </div>
         </div>
     </header>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3>YOUR CART</h3>
+            <span class="close-cart" onclick="closeCartDrawer()">&times;</span>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems"></div>
+        <div class="cart-drawer-footer">
+            <div class="summary-row" style="margin-bottom: 15px; font-weight: 700;">
+                <span>SUBTOTAL</span>
+                <span id="cartDrawerTotal">₹0</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-bottom: 20px;">FREE delivery on orders above ₹3,000</p>
+            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW CART</a>
+            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">CHECKOUT</a>
+        </div>
+    </div>
 
     <div class="breadcrumb">
         <div class="container">
@@ -65,7 +84,7 @@
                 </div>
                 <div class="tab-content" id="shipping">
                     <h4>Shipping Information</h4>
-                    <p>Free standard shipping on orders over $150. Estimated delivery: 3-5 business days.</p>
+                    <p>Free standard shipping on orders over ₹3,000. Estimated delivery: 3-5 business days.</p>
                     <h4 style="margin-top: 20px;">Returns & Exchanges</h4>
                     <p>We offer a 30-day return policy for all unworn items in their original packaging.</p>
                 </div>
@@ -136,7 +155,7 @@
                     <ul>
                         <li><a href="#">Instagram</a></li>
                         <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Twitter/X</a></li>
                         <li><a href="#">YouTube</a></li>
                     </ul>
                 </div>
@@ -163,14 +182,14 @@
             <h3>SIZE GUIDE</h3>
             <table class="specs-table" style="margin-top: 20px;">
                 <thead>
-                    <tr><th>Size</th><th>Chest (in)</th><th>Waist (in)</th></tr>
+                    <tr><th>Size</th><th>Chest (cm)</th><th>Waist (cm)</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>XS</td><td>34-36</td><td>28-30</td></tr>
-                    <tr><td>S</td><td>36-38</td><td>30-32</td></tr>
-                    <tr><td>M</td><td>38-40</td><td>32-34</td></tr>
-                    <tr><td>L</td><td>40-42</td><td>34-36</td></tr>
-                    <tr><td>XL</td><td>42-44</td><td>36-38</td></tr>
+                    <tr><td>XS</td><td>86-91</td><td>71-76</td></tr>
+                    <tr><td>S</td><td>91-96</td><td>76-81</td></tr>
+                    <tr><td>M</td><td>96-101</td><td>81-86</td></tr>
+                    <tr><td>L</td><td>101-106</td><td>86-91</td></tr>
+                    <tr><td>XL</td><td>106-111</td><td>91-96</td></tr>
                 </tbody>
             </table>
         </div>
@@ -208,11 +227,11 @@
                         </div>
                     </div>
                     <div class="product-info-panel">
-                        <p class="product-brand">MAVEN CORE</p>
+                        <p class="product-brand">${product.brand}</p>
                         <h1 class="product-title">${product.name}</h1>
                         <div class="price-section">
-                            <span class="current-price">$${product.price.toFixed(2)}</span>
-                            ${product.originalPrice > product.price ? `<span class="original-price">$${product.originalPrice.toFixed(2)}</span><span class="discount-badge">-${Math.round((1 - product.price/product.originalPrice)*100)}%</span>` : ''}
+                            <span class="current-price">${formatPrice(product.price)}</span>
+                            ${product.originalPrice > product.price ? `<span class="original-price">${formatPrice(product.originalPrice)}</span><span class="discount-badge">-${Math.round((1 - product.price/product.originalPrice)*100)}%</span>` : ''}
                         </div>
                         <div class="rating-section">
                             <div class="stars">${renderStars(product.rating)}</div>
@@ -240,7 +259,7 @@
                     </div>
                 `;
 
-                document.getElementById('specsTableContainer').innerHTML = `<table class="specs-table"><tr><td>Material</td><td>${product.material}</td></tr><tr><td>Category</td><td>${product.category}</td></tr><tr><td>Subcategory</td><td>${product.subcategory}</td></tr><tr><td>Season</td><td>${product.season.join(', ')}</td></tr></table>`;
+                document.getElementById('specsTableContainer').innerHTML = `<table class="specs-table"><tr><td>Material</td><td>${product.material}</td></tr><tr><td>Category</td><td>${product.category}</td></tr><tr><td>Subcategory</td><td>${product.subcategory}</td></tr></table>`;
                 document.getElementById('careInstructionsContainer').innerHTML = `<p>${product.careInstructions}</p>`;
 
                 renderReviews(0);
@@ -250,7 +269,7 @@
                 related.forEach(p => {
                     const card = document.createElement('div');
                     card.className = 'product-card';
-                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">$${p.price.toFixed(2)}</p></div>`;
+                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">${formatPrice(p.price)}</p></div>`;
                     relatedGrid.appendChild(card);
                 });
 
@@ -299,7 +318,7 @@
                 if (p) {
                     const card = document.createElement('div');
                     card.className = 'product-card';
-                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">$${p.price.toFixed(2)}</p></div>`;
+                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">${formatPrice(p.price)}</p></div>`;
                     grid.appendChild(card);
                 }
             });
@@ -314,8 +333,10 @@
             const colorBtns = document.querySelectorAll('.color-btn');
             colorBtns.forEach(b => b.addEventListener('click', () => { colorBtns.forEach(btn => btn.classList.remove('active')); b.classList.add('active'); }));
             const qtyInput = document.getElementById('quantity');
-            document.querySelector('.qty-btn.minus').addEventListener('click', () => { if (qtyInput.value > 1) qtyInput.value--; });
-            document.querySelector('.qty-btn.plus').addEventListener('click', () => { if (qtyInput.value < 10) qtyInput.value++; });
+            if (qtyInput) {
+                document.querySelector('.qty-btn.minus').addEventListener('click', () => { if (qtyInput.value > 1) qtyInput.value--; });
+                document.querySelector('.qty-btn.plus').addEventListener('click', () => { if (qtyInput.value < 10) qtyInput.value++; });
+            }
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             document.getElementById('zoomTrigger').addEventListener('click', () => { lightbox.style.display = "flex"; lightboxImg.src = mainImg.src; });

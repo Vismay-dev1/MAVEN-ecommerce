@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MAVEN - Premium modern menswear. Elevated essentials for the contemporary man. Shop our curated collection of jackets, shirts, and accessories.">
+    <meta name="description" content="MAVEN - Premium Modern Menswear. Elevated essentials for the contemporary man. Shop our curated collection of jackets, shirts, and accessories.">
     <meta property="og:title" content="MAVEN | Modern Men's Fashion">
     <meta property="og:description" content="Elevated essentials for the contemporary man. Modern design, premium quality.">
     <meta property="og:type" content="website">
-    <title>MAVEN | Modern Men's Fashion</title>
+    <title>MAVEN | Premium Modern Menswear</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,7 +23,7 @@
             </div>
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="#home">HOME</a></li>
                     <li><a href="#shop">SHOP</a></li>
                     <li><a href="#categories">COLLECTIONS</a></li>
                     <li><a href="#philosophy">ABOUT</a></li>
@@ -37,15 +37,36 @@
                 <a href="account.html" class="icon account-icon" aria-label="Account">
                     <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
                 </a>
-                <a href="cart.html" class="icon cart-icon" aria-label="Cart">
+                <div class="icon cart-icon" id="cartIconTrigger" aria-label="Cart" onclick="openCartDrawer()">
                     <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
                     <span class="cart-count">0</span>
-                </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <main>
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3>YOUR CART</h3>
+            <span class="close-cart" onclick="closeCartDrawer()">&times;</span>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems">
+            <!-- Items injected by JS -->
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="summary-row" style="margin-bottom: 15px; font-weight: 700;">
+                <span>SUBTOTAL</span>
+                <span id="cartDrawerTotal">₹0</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-bottom: 20px;">FREE delivery on orders above ₹3,000</p>
+            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW CART</a>
+            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">CHECKOUT</a>
+        </div>
+    </div>
+
+    <main id="home">
         <section class="hero">
             <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=2070&auto=format&fit=crop')">
             </div>
@@ -67,7 +88,7 @@
                     <p>Hand-picked selections from our latest release.</p>
                 </div>
                 <div class="featured-grid">
-                    <!-- Featured items will be injected by JS or hardcoded for now -->
+                    <!-- Featured items will be injected by JS -->
                 </div>
             </div>
         </section>
@@ -79,34 +100,34 @@
                     <p>Our core collection featuring essential pieces for the modern man.</p>
                 </div>
                 <div class="categories-grid">
-                    <div class="category-card">
+                    <div class="category-card" onclick="document.querySelector('input[value=\'jackets\']').click(); location.href='#shop';">
                         <div class="category-image">
                             <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1935&auto=format&fit=crop" alt="Jackets">
                         </div>
                         <div class="category-info">
                             <h3>JACKETS</h3>
                             <p>Premium outerwear</p>
-                            <a href="#" class="explore-link">EXPLORE MORE →</a>
+                            <span class="explore-link">EXPLORE MORE →</span>
                         </div>
                     </div>
-                    <div class="category-card">
+                    <div class="category-card" onclick="document.querySelector('input[value=\'shirts\']').click(); location.href='#shop';">
                         <div class="category-image">
                             <img src="https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=1974&auto=format&fit=crop" alt="Shirts">
                         </div>
                         <div class="category-info">
                             <h3>SHIRTS</h3>
                             <p>Essential layers</p>
-                            <a href="#" class="explore-link">EXPLORE MORE →</a>
+                            <span class="explore-link">EXPLORE MORE →</span>
                         </div>
                     </div>
-                    <div class="category-card">
+                    <div class="category-card" onclick="document.querySelector('input[value=\'pants\']').click(); location.href='#shop';">
                         <div class="category-image">
                             <img src="https://images.unsplash.com/photo-1473966968600-fa804b86d30b?q=80&w=1974&auto=format&fit=crop" alt="Pants">
                         </div>
                         <div class="category-info">
                             <h3>PANTS</h3>
                             <p>Modern fit</p>
-                            <a href="#" class="explore-link">EXPLORE MORE →</a>
+                            <span class="explore-link">EXPLORE MORE →</span>
                         </div>
                     </div>
                 </div>
@@ -123,11 +144,11 @@
                         <div class="filter-group">
                             <h4>CATEGORY</h4>
                             <div class="filter-options" id="categoryFilters">
-                                <label><input type="checkbox" value="Jackets"> Jackets</label>
-                                <label><input type="checkbox" value="Shirts"> Shirts</label>
-                                <label><input type="checkbox" value="Pants"> Pants</label>
-                                <label><input type="checkbox" value="Shorts"> Shorts</label>
-                                <label><input type="checkbox" value="Accessories"> Accessories</label>
+                                <label><input type="checkbox" value="jackets"> Jackets</label>
+                                <label><input type="checkbox" value="shirts"> Shirts</label>
+                                <label><input type="checkbox" value="pants"> Pants</label>
+                                <label><input type="checkbox" value="shorts"> Shorts</label>
+                                <label><input type="checkbox" value="accessories"> Accessories</label>
                             </div>
                         </div>
 
@@ -143,18 +164,24 @@
                         </div>
 
                         <div class="filter-group">
-                            <h4>PRICE RANGE</h4>
-                            <input type="range" id="priceRange" min="0" max="500" step="10" value="500">
-                            <p id="priceLabel">$0 - $500</p>
+                            <h4>PRICE RANGE (₹)</h4>
+                            <input type="range" id="priceRange" min="0" max="50000" step="100" value="50000">
+                            <p id="priceLabel">₹0 - ₹50,000</p>
                         </div>
 
                         <div class="filter-group">
-                            <h4>SEASON</h4>
-                            <div class="filter-options" id="seasonFilters">
-                                <label><input type="checkbox" value="Spring"> Spring</label>
-                                <label><input type="checkbox" value="Summer"> Summer</label>
-                                <label><input type="checkbox" value="Fall"> Fall</label>
-                                <label><input type="checkbox" value="Winter"> Winter</label>
+                            <h4>RATING</h4>
+                            <div class="filter-options" id="ratingFilters">
+                                <label><input type="checkbox" value="4"> ⭐⭐⭐⭐+ (4 & above)</label>
+                                <label><input type="checkbox" value="3"> ⭐⭐⭐+ (3 & above)</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h4>DISCOUNT</h4>
+                            <div class="filter-options" id="discountFilters">
+                                <label><input type="checkbox" value="30"> 30% or more</label>
+                                <label><input type="checkbox" value="50"> 50% or more</label>
                             </div>
                         </div>
                     </aside>
@@ -167,6 +194,7 @@
                                 <option value="price-low">Price: Low to High</option>
                                 <option value="price-high">Price: High to Low</option>
                                 <option value="rating">Highest Rated</option>
+                                <option value="discount">Highest Discount</option>
                             </select>
                         </div>
 
@@ -260,7 +288,7 @@
                     <ul>
                         <li><a href="#">Instagram</a></li>
                         <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Twitter/X</a></li>
                         <li><a href="#">YouTube</a></li>
                     </ul>
                 </div>
