@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account | MAVEN</title>
+    <title>Profile | AURA LUXE</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="header scrolled">
         <div class="container nav-container">
-            <div class="mobile-menu-btn" id="mobileMenuBtn"><span></span><span></span><span></span></div>
-            <div class="logo"><a href="index.html">MAVEN</a></div>
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <a href="index.html">AURA</a>
+            </div>
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="index.html#home">HOME</a></li>
-                    <li><a href="index.html#shop">SHOP</a></li>
-                    <li><a href="index.html#categories">COLLECTIONS</a></li>
-                    <li><a href="index.html#philosophy">ABOUT</a></li>
+                    <li><a href="index.html">Collections</a></li>
+                    <li><a href="index.html#featured">Curated</a></li>
+                    <li><a href="index.html#shop">Shop All</a></li>
+                    <li><a href="index.html#philosophy">Heritage</a></li>
+                    <li class="mobile-only"><a href="account.html">Profile</a></li>
+                    <li><a href="account.html#wishlist" class="mobile-only">Wishlist</a></li>
                 </ul>
             </nav>
             <div class="header-icons">
-                <div class="search-container"><img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search"><input type="text" id="searchInput" placeholder="Search..."></div>
-                <a href="account.html" class="icon account-icon"><img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account"></a>
+                <div class="search-container">
+                    <img src="https://img.icons8.com/material-outlined/20/ffffff/search--v1.png" alt="Search">
+                    <input type="text" id="searchInput" placeholder="Search collection...">
+                </div>
+                <a href="account.html" class="icon account-icon" aria-label="Account">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
+                </a>
                 <div class="icon cart-icon" id="cartIconTrigger" aria-label="Cart" onclick="openCartDrawer()">
                     <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
                     <span class="cart-count">0</span>
@@ -30,74 +43,65 @@
         </div>
     </header>
 
-    <!-- Cart Drawer -->
-    <div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
-    <div class="cart-drawer" id="cartDrawer">
-        <div class="cart-drawer-header">
-            <h3>YOUR CART</h3>
-            <span class="close-cart" onclick="closeCartDrawer()">&times;</span>
-        </div>
-        <div class="cart-drawer-items" id="cartDrawerItems"></div>
-        <div class="cart-drawer-footer">
-            <div class="summary-row" style="margin-bottom: 15px; font-weight: 700;">
-                <span>SUBTOTAL</span>
-                <span id="cartDrawerTotal">₹0</span>
-            </div>
-            <p style="font-size: 11px; color: var(--text-light); margin-bottom: 20px;">FREE delivery on orders above ₹3,000</p>
-            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW CART</a>
-            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">CHECKOUT</a>
-        </div>
-    </div>
-
-    <div class="breadcrumb"><div class="container"><p><a href="index.html">Home</a> / My Account</p></div></div>
-
-    <section class="account-section">
+    <section class="account-section" style="padding-top: 150px;">
         <div class="container">
             <div class="account-container">
-                <aside class="account-sidebar">
+                <aside class="account-sidebar glass" style="padding: 2rem; border-radius: 16px;">
                     <div class="user-brief">
                         <div class="avatar">JD</div>
-                        <h4>JOHN DOE</h4>
-                        <p style="font-size: 12px; color: var(--text-light);">john.doe@example.com</p>
+                        <h3>John Doe</h3>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Platinum Member</p>
                     </div>
                     <nav class="account-nav">
-                        <button class="acc-nav-btn active" data-section="dashboard">DASHBOARD</button>
-                        <button class="acc-nav-btn" data-section="orders">MY ORDERS</button>
-                        <button class="acc-nav-btn" data-section="wishlist">WISHLIST</button>
-                        <button class="acc-nav-btn" data-section="addresses">ADDRESSES</button>
-                        <button class="acc-nav-btn" style="color: var(--error);">LOGOUT</button>
+                        <button class="acc-nav-btn active" onclick="showAccountTab(this, 'orders')">Order History</button>
+                        <button class="acc-nav-btn" onclick="showAccountTab(this, 'wishlist-tab')">Wishlist</button>
+                        <button class="acc-nav-btn" onclick="showAccountTab(this, 'addresses')">Saved Addresses</button>
+                        <button class="acc-nav-btn" onclick="showAccountTab(this, 'rewards')">Aura Rewards</button>
                     </nav>
                 </aside>
 
-                <main class="account-main">
-                    <div id="dashboard" class="account-section-content active">
-                        <h3>DASHBOARD</h3>
-                        <p style="margin-top: 10px;">Hello, <strong>John</strong>! From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
-
+                <main class="account-main glass" style="padding: 3rem; border-radius: 24px; flex: 1;">
+                    <div id="orders" class="account-tab-content active">
+                        <h2>Order History</h2>
                         <div class="dashboard-stats">
-                            <div class="stat-card"><span>Total Orders</span><strong>12</strong></div>
-                            <div class="stat-card"><span>Wishlist Items</span><strong id="wishlistCountStat">0</strong></div>
-                            <div class="stat-card"><span>Store Credit</span><strong>₹1,500</strong></div>
+                            <div class="stat-card glass">
+                                <span>TOTAL ORDERS</span>
+                                <strong>12</strong>
+                            </div>
+                            <div class="stat-card glass">
+                                <span>WISHLIST ITEMS</span>
+                                <strong id="wishlistCount">0</strong>
+                            </div>
+                            <div class="stat-card glass">
+                                <span>REWARD POINTS</span>
+                                <strong>2,450</strong>
+                            </div>
+                        </div>
+                        <p style="color: var(--text-muted); text-align: center; padding: 4rem;">No recent orders found.</p>
+                    </div>
+
+                    <div id="wishlist-tab" class="account-tab-content">
+                        <h2>My Wishlist</h2>
+                        <div class="product-grid" id="accountWishlistGrid">
+                            <!-- Wishlist items will be injected here -->
                         </div>
                     </div>
 
-                    <div id="orders" class="account-section-content">
-                        <h3>MY ORDERS</h3>
-                        <div style="margin-top: 20px; overflow-x: auto;">
-                            <table class="specs-table">
-                                <thead><tr><th>Order #</th><th>Date</th><th>Status</th><th>Total</th></tr></thead>
-                                <tbody>
-                                    <tr><td>#MVN-8492</td><td>Oct 12, 2024</td><td>Delivered</td><td>₹12,499</td></tr>
-                                    <tr><td>#MVN-8210</td><td>Sep 28, 2024</td><td>Delivered</td><td>₹5,999</td></tr>
-                                </tbody>
-                            </table>
+                    <div id="addresses" class="account-tab-content">
+                        <h2>Saved Addresses</h2>
+                        <div class="glass" style="padding: 2rem; border-radius: 12px; margin-top: 2rem;">
+                            <p><strong>Primary Address</strong></p>
+                            <p style="color: var(--text-muted);">123 Luxury Lane, Worli, Mumbai, 400018</p>
+                            <button class="btn btn-outline" style="margin-top: 1rem; padding: 0.5rem 1rem;">Edit</button>
                         </div>
                     </div>
 
-                    <div id="wishlist" class="account-section-content">
-                        <h3>WISHLIST</h3>
-                        <div class="product-grid" id="wishlistGrid" style="margin-top: 20px;">
-                            <!-- Wishlist items injected by JS -->
+                    <div id="rewards" class="account-tab-content">
+                        <h2>Aura Rewards</h2>
+                        <div class="glass" style="padding: 2rem; border-radius: 12px; margin-top: 2rem; text-align: center;">
+                            <p style="font-size: 1.5rem; margin-bottom: 1rem;">You have <strong>2,450</strong> Points</p>
+                            <p style="color: var(--text-muted);">Redeem points for exclusive discounts and early access to drops.</p>
+                            <button class="btn btn-primary" style="margin-top: 2rem;">REDEEM NOW</button>
                         </div>
                     </div>
                 </main>
@@ -105,125 +109,57 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <h4>ABOUT</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>SHOP</h4>
-                    <ul>
-                        <li><a href="index.html#shop">New Arrivals</a></li>
-                        <li><a href="index.html#categories">Collections</a></li>
-                        <li><a href="index.html#shop">Sale</a></li>
-                        <li><a href="#">Gift Cards</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>SUPPORT</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h4>FOLLOW</h4>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter/X</a></li>
-                        <li><a href="#">YouTube</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 MAVEN. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navBtns = document.querySelectorAll('.acc-nav-btn');
-            const sections = document.querySelectorAll('.account-section-content');
+        window.showAccountTab = function(btn, tabId) {
+            document.querySelectorAll('.acc-nav-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.account-tab-content').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
 
-            navBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const target = btn.getAttribute('data-section');
-                    if (!target) return;
+            if (tabId === 'wishlist-tab') {
+                renderWishlistInAccount();
+            }
+        };
 
-                    navBtns.forEach(b => b.classList.remove('active'));
-                    sections.forEach(s => s.classList.remove('active'));
+        function renderWishlistInAccount() {
+            const grid = document.getElementById('accountWishlistGrid');
+            if (!grid) return;
 
-                    btn.classList.add('active');
-                    const targetEl = document.getElementById(target);
-                    if (targetEl) targetEl.classList.add('active');
-
-                    if (target === 'wishlist') {
-                        renderWishlist();
-                    }
-                });
-            });
-
-            function renderWishlist() {
-                const wishlistGrid = document.getElementById('wishlistGrid');
-                if (!wishlistGrid) return;
-
-                const wishlistIds = JSON.parse(localStorage.getItem('maven_wishlist')) || [];
-                const wishlistItems = products.filter(p => wishlistIds.includes(p.id));
-
-                document.getElementById('wishlistCountStat').textContent = wishlistIds.length;
-
-                if (wishlistItems.length === 0) {
-                    wishlistGrid.innerHTML = '<p style="grid-column: span 3; text-align: center; padding: 40px; color: var(--text-light);">Your wishlist is empty.</p>';
-                    return;
-                }
-
-                wishlistGrid.innerHTML = '';
-                wishlistItems.forEach(p => {
-                    const card = document.createElement('div');
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <div class="product-image-container">
-                            <a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a>
-                            <button onclick="removeFromWishlist(${p.id})" style="position: absolute; top: 10px; right: 10px; background: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">✕</button>
-                        </div>
-                        <div class="product-info">
-                            <h4 class="product-name">${p.name}</h4>
-                            <p class="product-price">${formatPrice(p.price)}</p>
-                        </div>`;
-                    wishlistGrid.appendChild(card);
-                });
+            if (wishlist.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 4rem;">Your wishlist is empty.</p>';
+                return;
             }
 
-            window.removeFromWishlist = function(id) {
-                let wishlist = JSON.parse(localStorage.getItem('maven_wishlist')) || [];
-                wishlist = wishlist.filter(pId => pId !== id);
-                localStorage.setItem('maven_wishlist', JSON.stringify(wishlist));
-                renderWishlist();
-                showToast("Removed from wishlist");
-            };
+            grid.innerHTML = wishlist.map(product => `
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="${product.image}" alt="${product.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3 style="font-size: 1rem;">${product.name}</h3>
+                        <p style="color: var(--accent-primary);">${formatPrice(product.price)}</p>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: 1rem; padding: 0.5rem;" onclick="location.href='product.html?id=${product.id}'">VIEW ITEM</button>
+                    </div>
+                </div>
+            `).join('');
+        }
 
-            // Initial stat update
-            const wishlistIds = JSON.parse(localStorage.getItem('maven_wishlist')) || [];
-            document.getElementById('wishlistCountStat').textContent = wishlistIds.length;
-            renderWishlist();
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('wishlistCount').textContent = wishlist.length;
+
+            // Check for hash to open wishlist tab
+            if (window.location.hash === '#wishlist') {
+                const wishlistBtn = document.querySelector('button[onclick*="wishlist-tab"]');
+                if (wishlistBtn) wishlistBtn.click();
+            }
         });
     </script>
+    <style>
+        .account-tab-content { display: none; }
+        .account-tab-content.active { display: block; }
+        .acc-nav-btn { width: 100%; text-align: left; padding: 1rem; background: transparent; border: none; color: var(--text-muted); cursor: pointer; transition: 0.3s; border-radius: 8px; }
+        .acc-nav-btn.active { background: rgba(139, 92, 246, 0.1); color: var(--accent-primary); }
+    </style>
 </body>
 </html>

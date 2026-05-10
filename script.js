@@ -1,475 +1,128 @@
+// Product Database
 const products = [
-  {
-    id: 1,
-    name: "Premium Leather Jacket",
-    category: "jackets",
-    brand: "MAVEN",
-    price: 8499,
-    originalPrice: 12999,
-    discount: 35,
-    rating: 4.8,
-    reviews: 342,
-    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black"],
-    badge: "new",
-    isNew: true,
-    isSale: false,
-    stock: 5,
-    inStock: true,
-    quantity_available: 5,
-    description: "Premium quality leather jacket perfect for any occasion. Masterfully crafted for durability and style.",
-    material: "100% Genuine Leather",
-    features: ["Premium quality leather", "Modern tailored fit", "Inner pocket storage", "Durable lining"],
-    careInstructions: "Professional leather clean only",
-    subcategory: "Outerwear"
-  },
-  {
-    id: 2,
-    name: "Bomber Jacket",
-    category: "jackets",
-    brand: "MAVEN",
-    price: 5999,
-    originalPrice: 8999,
-    discount: 33,
-    rating: 4.6,
-    reviews: 218,
-    image: "https://images.unsplash.com/photo-1578921049727-e97b99e553b9?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1578921049727-e97b99e553b9?q=80&w=500&h=625&fit=crop"],
-    sizes: ["XS", "S", "M", "L"],
-    colors: ["Olive", "Black"],
-    badge: "sale",
-    isNew: false,
-    isSale: true,
-    stock: 12,
-    inStock: true,
-    quantity_available: 12,
-    description: "Classic bomber jacket with modern styling. Lightweight yet warm, perfect for transitional seasons.",
-    material: "100% Nylon Shell",
-    features: ["Water-resistant finish", "Ribbed collar and cuffs", "Arm utility pocket", "Soft inner lining"],
-    careInstructions: "Machine wash cold",
-    subcategory: "Casual"
-  },
-  {
-    id: 3,
-    name: "Wool Peacoat",
-    category: "jackets",
-    brand: "MAVEN",
-    price: 7999,
-    originalPrice: 11999,
-    discount: 33,
-    rating: 4.9,
-    reviews: 156,
-    image: "https://images.unsplash.com/photo-1539533057440-7bf6248b1cb5?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1539533057440-7bf6248b1cb5?q=80&w=500&h=625&fit=crop"],
-    sizes: ["M", "L", "XL"],
-    colors: ["Navy", "Charcoal"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 8,
-    inStock: true,
-    quantity_available: 8,
-    description: "Luxurious wool peacoat for formal occasions. Offers exceptional warmth and a sharp silhouette.",
-    material: "80% Wool, 20% Polyamide",
-    features: ["Heavyweight wool blend", "Double-breasted design", "Notch lapels", "Silk-feel lining"],
-    careInstructions: "Dry clean only",
-    subcategory: "Formal"
-  },
-  {
-    id: 4,
-    name: "Denim Jacket",
-    category: "jackets",
-    brand: "MAVEN",
-    price: 4499,
-    originalPrice: 6999,
-    discount: 35,
-    rating: 4.7,
-    reviews: 289,
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Indigo"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 15,
-    inStock: true,
-    quantity_available: 15,
-    description: "Timeless denim jacket for everyday wear. Crafted from premium selvedge denim that ages beautifully.",
-    material: "100% Cotton Denim",
-    features: ["Selvedge denim", "Metal shank buttons", "Reinforced stitching", "Classic trucker fit"],
-    careInstructions: "Wash sparingly, hang to dry",
-    subcategory: "Casual"
-  },
-  {
-    id: 5,
-    name: "White Linen Shirt",
-    category: "shirts",
-    brand: "MAVEN",
-    price: 2999,
-    originalPrice: 4499,
-    discount: 33,
-    rating: 4.5,
-    reviews: 412,
-    image: "https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=500&h=625&fit=crop"],
-    sizes: ["XS", "S", "M", "L", "XL"],
-    colors: ["White"],
-    badge: "new",
-    isNew: true,
-    isSale: false,
-    stock: 20,
-    inStock: true,
-    quantity_available: 20,
-    description: "Breathable linen shirt perfect for summer. Stay cool and sophisticated in any heat.",
-    material: "100% Pure Linen",
-    features: ["Breathable fabric", "Relaxed fit", "Spread collar", "Moisture-wicking"],
-    careInstructions: "Hand wash cold recommended",
-    subcategory: "Summer Wear"
-  },
-  {
-    id: 6,
-    name: "Black Oxford Shirt",
-    category: "shirts",
-    brand: "MAVEN",
-    price: 3499,
-    originalPrice: 5499,
-    discount: 36,
-    rating: 4.8,
-    reviews: 367,
-    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 18,
-    inStock: true,
-    quantity_available: 18,
-    description: "Classic oxford shirt for professional looks. A versatile staple for the modern wardrobe.",
-    material: "100% Premium Cotton",
-    features: ["Button-down collar", "Tailored fit", "Durable oxford weave", "Chest pocket"],
-    careInstructions: "Machine wash warm",
-    subcategory: "Professional"
-  },
-  {
-    id: 7,
-    name: "Blue Denim Shirt",
-    category: "shirts",
-    brand: "MAVEN",
-    price: 2499,
-    originalPrice: 3999,
-    discount: 37,
-    rating: 4.6,
-    reviews: 290,
-    image: "https://images.unsplash.com/photo-1596855880937-ec461f01c9ce?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1596855880937-ec461f01c9ce?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Light Blue"],
-    badge: "sale",
-    isNew: false,
-    isSale: true,
-    stock: 22,
-    inStock: true,
-    quantity_available: 22,
-    description: "Versatile denim shirt for casual styling. Perfect for layering or wearing on its own.",
-    material: "100% Lightweight Denim",
-    features: ["Soft-wash finish", "Snap buttons", "Western yoke details", "Double chest pockets"],
-    careInstructions: "Wash with like colors",
-    subcategory: "Casual"
-  },
-  {
-    id: 8,
-    name: "Maroon Check Shirt",
-    category: "shirts",
-    brand: "MAVEN",
-    price: 2799,
-    originalPrice: 4499,
-    discount: 37,
-    rating: 4.7,
-    reviews: 198,
-    image: "https://images.unsplash.com/photo-1589985643494-e41b6675c84f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1589985643494-e41b6675c84f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["M", "L", "XL"],
-    colors: ["Maroon"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 14,
-    inStock: true,
-    quantity_available: 14,
-    description: "Stylish check pattern shirt for casual outings. Adds a pop of color to your daily rotation.",
-    material: "100% Brushed Cotton",
-    features: ["Soft flannel feel", "Classic check pattern", "Regular fit", "Adjustable cuffs"],
-    careInstructions: "Machine wash cold",
-    subcategory: "Casual"
-  },
-  {
-    id: 9,
-    name: "Slim Fit Black Pants",
-    category: "pants",
-    brand: "MAVEN",
-    price: 3999,
-    originalPrice: 6499,
-    discount: 38,
-    rating: 4.9,
-    reviews: 451,
-    image: "https://images.unsplash.com/photo-1473966968600-fa804b86d30b?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1473966968600-fa804b86d30b?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black"],
-    badge: "new",
-    isNew: true,
-    isSale: false,
-    stock: 16,
-    inStock: true,
-    quantity_available: 16,
-    description: "Perfectly tailored slim fit pants for any occasion. Sleek, modern, and comfortable.",
-    material: "98% Cotton, 2% Elastane",
-    features: ["Stretch-cotton blend", "Tapered leg", "Clean minimalist design", "Secure zip fly"],
-    careInstructions: "Machine wash cold",
-    subcategory: "Formal/Casual"
-  },
-  {
-    id: 10,
-    name: "Chinos Beige",
-    category: "pants",
-    brand: "MAVEN",
-    price: 3499,
-    originalPrice: 5499,
-    discount: 36,
-    rating: 4.6,
-    reviews: 267,
-    image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Beige"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 19,
-    inStock: true,
-    quantity_available: 19,
-    description: "Comfortable chinos for casual and smart casual wear. A versatile bottom for any top.",
-    material: "100% Cotton Twill",
-    features: ["Durable twill weave", "Straight fit", "Breathable material", "Four-pocket styling"],
-    careInstructions: "Machine wash warm",
-    subcategory: "Smart Casual"
-  },
-  {
-    id: 11,
-    name: "Navy Formal Pants",
-    category: "pants",
-    brand: "MAVEN",
-    price: 4299,
-    originalPrice: 6999,
-    discount: 38,
-    rating: 4.8,
-    reviews: 334,
-    image: "https://images.unsplash.com/photo-1534782501304-8af17ade49c1?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1534782501304-8af17ade49c1?q=80&w=500&h=625&fit=crop"],
-    sizes: ["M", "L", "XL"],
-    colors: ["Navy"],
-    badge: "sale",
-    isNew: false,
-    isSale: true,
-    stock: 10,
-    inStock: true,
-    quantity_available: 10,
-    description: "Premium formal pants for business and formal events. Sharp creases and a perfect drape.",
-    material: "70% Polyester, 30% Viscose",
-    features: ["Wrinkle-resistant", "Sharp front crease", "Tailored fit", "Premium finish"],
-    careInstructions: "Dry clean recommended",
-    subcategory: "Formal"
-  },
-  {
-    id: 12,
-    name: "Olive Cargo Pants",
-    category: "pants",
-    brand: "MAVEN",
-    price: 3199,
-    originalPrice: 5499,
-    discount: 41,
-    rating: 4.5,
-    reviews: 201,
-    image: "https://images.unsplash.com/photo-1506629082632-a1a9b96e8e3b?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1506629082632-a1a9b96e8e3b?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L"],
-    colors: ["Olive"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 13,
-    inStock: true,
-    quantity_available: 13,
-    description: "Functional cargo pants with style and comfort. Multiple pockets for your essentials.",
-    material: "100% Cotton Ripstop",
-    features: ["Rugged ripstop fabric", "6-pocket design", "Reinforced knees", "Adjustable hem"],
-    careInstructions: "Machine wash cold",
-    subcategory: "Casual"
-  },
-  {
-    id: 13,
-    name: "Black Shorts",
-    category: "shorts",
-    brand: "MAVEN",
-    price: 1999,
-    originalPrice: 3499,
-    discount: 42,
-    rating: 4.4,
-    reviews: 178,
-    image: "https://images.unsplash.com/photo-1611089211512-2a86611e1d4f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1611089211512-2a86611e1d4f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Black"],
-    badge: "new",
-    isNew: true,
-    isSale: false,
-    stock: 25,
-    inStock: true,
-    quantity_available: 25,
-    description: "Classic black shorts for summer and casual wear. Lightweight and versatile.",
-    material: "100% Cotton",
-    features: ["Soft cotton fabric", "Above-knee length", "Elasticated waistband", "Side pockets"],
-    careInstructions: "Machine wash cold",
-    subcategory: "Summer Wear"
-  },
-  {
-    id: 14,
-    name: "Khaki Shorts",
-    category: "shorts",
-    brand: "MAVEN",
-    price: 1799,
-    originalPrice: 3299,
-    discount: 45,
-    rating: 4.6,
-    reviews: 142,
-    image: "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=500&h=625&fit=crop"],
-    sizes: ["S", "M", "L", "XL"],
-    colors: ["Khaki"],
-    badge: "sale",
-    isNew: false,
-    isSale: true,
-    stock: 28,
-    inStock: true,
-    quantity_available: 28,
-    description: "Versatile khaki shorts for any season. Durable and stylish.",
-    material: "100% Cotton Twill",
-    features: ["Durable twill weave", "Classic fit", "Secure button closure", "Deep pockets"],
-    careInstructions: "Machine wash cold",
-    subcategory: "Casual"
-  },
-  {
-    id: 15,
-    name: "Leather Belt",
-    category: "accessories",
-    brand: "MAVEN",
-    price: 999,
-    originalPrice: 1999,
-    discount: 50,
-    rating: 4.7,
-    reviews: 523,
-    image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=500&h=625&fit=crop"],
-    sizes: ["One Size"],
-    colors: ["Brown"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 40,
-    inStock: true,
-    quantity_available: 40,
-    description: "Premium leather belt to complement any outfit. Solid brass buckle and hand-stitched details.",
-    material: "100% Genuine Leather",
-    features: ["Full-grain leather", "Brass buckle", "Hand-finished edges", "1.5 inch width"],
-    careInstructions: "Wipe with clean cloth",
-    subcategory: "Leather Goods"
-  },
-  {
-    id: 16,
-    name: "Sunglasses UV",
-    category: "accessories",
-    brand: "MAVEN",
-    price: 2499,
-    originalPrice: 4999,
-    discount: 50,
-    rating: 4.8,
-    reviews: 389,
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["One Size"],
-    colors: ["Black"],
-    badge: "new",
-    isNew: true,
-    isSale: false,
-    stock: 35,
-    inStock: true,
-    quantity_available: 35,
-    description: "UV protected sunglasses with stylish design. Durable frame and polarized lenses.",
-    material: "Acetate Frame",
-    features: ["100% UV Protection", "Polarized lenses", "Durable hinges", "Lightweight design"],
-    careInstructions: "Clean with microfiber cloth",
-    subcategory: "Eyewear"
-  },
-  {
-    id: 17,
-    name: "Canvas Watch",
-    category: "accessories",
-    brand: "MAVEN",
-    price: 3999,
-    originalPrice: 7999,
-    discount: 50,
-    rating: 4.9,
-    reviews: 612,
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1523293182086-7651a899d37f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["One Size"],
-    colors: ["Silver"],
-    badge: "sale",
-    isNew: false,
-    isSale: true,
-    stock: 22,
-    inStock: true,
-    quantity_available: 22,
-    description: "Elegant canvas watch for a timeless look. Japanese quartz movement and water-resistant.",
-    material: "Stainless Steel Case, Canvas Strap",
-    features: ["Japanese Quartz Movement", "Scratch-resistant glass", "Water resistant", "Durable canvas strap"],
-    careInstructions: "Avoid water immersion",
-    subcategory: "Timepieces"
-  },
-  {
-    id: 18,
-    name: "Wool Beanie",
-    category: "accessories",
-    brand: "MAVEN",
-    price: 699,
-    originalPrice: 1499,
-    discount: 53,
-    rating: 4.5,
-    reviews: 267,
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=500&h=625&fit=crop",
-    images: ["https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=500&h=625&fit=crop"],
-    sizes: ["One Size"],
-    colors: ["Gray"],
-    badge: null,
-    isNew: false,
-    isSale: false,
-    stock: 50,
-    inStock: true,
-    quantity_available: 50,
-    description: "Cozy wool beanie for cold weather. Soft knit and comfortable fit.",
-    material: "50% Wool, 50% Acrylic",
-    features: ["Soft wool blend", "Stretch fit", "Cuffed design", "Insulating property"],
-    careInstructions: "Hand wash only",
-    subcategory: "Winter Wear"
-  }
+    {
+        id: 1,
+        name: "Zenith Skeleton Chronograph",
+        brand: "Aura Luxe",
+        category: "timepieces",
+        price: 245000,
+        originalPrice: 285000,
+        rating: 4.9,
+        reviews: 124,
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=2070&auto=format&fit=crop",
+        description: "A masterpiece of horological engineering. Featuring an open-worked dial that reveals the high-frequency movement within.",
+        features: ["Swiss-made Automatic Movement", "72-Hour Power Reserve", "Grade 5 Titanium Case", "Water Resistant to 100m"],
+        sizes: ["42mm", "45mm"],
+        colors: ["Titanium", "Midnight Black", "Rose Gold"],
+        new: true,
+        featured: true,
+        discount: 14
+    },
+    {
+        id: 2,
+        name: "Saffiano Leather Executive Folio",
+        brand: "Aura Luxe",
+        category: "leather",
+        price: 45000,
+        originalPrice: 52000,
+        rating: 4.8,
+        reviews: 85,
+        image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?q=80&w=2070&auto=format&fit=crop",
+        description: "Impeccably crafted from premium Saffiano leather, this folio is designed for the modern executive. Features a minimalist profile with maximum utility.",
+        features: ["Hand-stitched Finish", "Italian Saffiano Leather", "Hidden RFID Protection", "Multiple Document Compartments"],
+        sizes: ["Standard", "Large"],
+        colors: ["Cognac", "Obsidian", "Deep Navy"],
+        new: true,
+        featured: true,
+        discount: 13
+    },
+    {
+        id: 3,
+        name: "Navigator 2.0 Polarized",
+        brand: "Aura Luxe",
+        category: "eyewear",
+        price: 18500,
+        originalPrice: 18500,
+        rating: 4.9,
+        reviews: 320,
+        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=2070&auto=format&fit=crop",
+        description: "Timeless navigator silhouette re-engineered with aerospace-grade titanium and precision polarized lenses.",
+        features: ["100% UV Protection", "Anti-Reflective Coating", "Ultralight Titanium Frame", "Scratch-Resistant Lenses"],
+        sizes: ["M", "L"],
+        colors: ["Silver/Grey", "Gold/Green", "Black/Black"],
+        new: false,
+        featured: true,
+        discount: 0
+    },
+    {
+        id: 4,
+        name: "Full-Grain Signature Belt",
+        brand: "Aura Luxe",
+        category: "leather",
+        price: 12500,
+        originalPrice: 15000,
+        rating: 4.7,
+        reviews: 110,
+        image: "https://images.unsplash.com/photo-1624222247344-550fb80583dc?q=80&w=2070&auto=format&fit=crop",
+        description: "Each belt is cut from a single piece of full-grain vegetable-tanned leather. Features a custom-forged solid brass buckle.",
+        features: ["Full-Grain Leather", "Solid Brass Buckle", "Hand-Burnished Edges", "Lifetime Warranty"],
+        sizes: ["32", "34", "36", "38", "40"],
+        colors: ["Chestnut", "Black", "Tan"],
+        new: true,
+        featured: false,
+        discount: 16
+    },
+    {
+        id: 5,
+        name: "Monolith Cufflinks",
+        brand: "Aura Luxe",
+        category: "accessories",
+        price: 8900,
+        originalPrice: 8900,
+        rating: 4.6,
+        reviews: 45,
+        image: "https://images.unsplash.com/photo-1617114919297-3c8ddb01f599?q=80&w=2070&auto=format&fit=crop",
+        description: "Sculptural cufflinks inspired by modern architecture. Cast in sterling silver with a brushed matte finish.",
+        features: ["925 Sterling Silver", "Matte Brushed Finish", "T-Back Closure", "Luxe Gift Box Included"],
+        sizes: ["One Size"],
+        colors: ["Silver", "Gunmetal"],
+        new: false,
+        featured: false,
+        discount: 0
+    },
+    {
+        id: 6,
+        name: "Artisan Leather Weekender",
+        brand: "Aura Luxe",
+        category: "leather",
+        price: 85000,
+        originalPrice: 95000,
+        rating: 5.0,
+        reviews: 28,
+        image: "https://images.unsplash.com/photo-1547949003-9792a18a2601?q=80&w=2070&auto=format&fit=crop",
+        description: "The ultimate travel companion. Handcrafted using traditional techniques and the finest bridle leather.",
+        features: ["Bridle Leather", "Spacious Interior", "Detachable Shoulder Strap", "Reinforced Base"],
+        sizes: ["45L"],
+        colors: ["Heritage Brown", "Classic Black"],
+        new: true,
+        featured: false,
+        discount: 10
+    }
 ];
 
-// Currency Helper
+// State Management
+let cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
+let wishlist = JSON.parse(localStorage.getItem('maven_wishlist')) || [];
+let activeFilters = {
+    category: [],
+    size: [],
+    price: 100000,
+    rating: [],
+    discount: []
+};
+let currentSort = 'newest';
+
+// Utility Functions
 function formatPrice(price) {
     return new Intl.NumberFormat('en-IN', {
         style: 'currency',
@@ -478,365 +131,194 @@ function formatPrice(price) {
     }).format(price);
 }
 
-// Debounce helper
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+
+    setTimeout(() => {
+        toast.classList.add('fade-out');
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
 }
 
-// Throttle helper
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const args = arguments;
-        const context = this;
-        if (!inThrottle) {
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    }
-}
-
-// Helper to render stars
-function renderStars(rating) {
-    const fullStars = Math.floor(rating);
-    const halfStar = rating % 1 >= 0.5 ? 1 : 0;
-    const emptyStars = 5 - fullStars - halfStar;
-    return '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars);
-}
-
-// Global filter state
-let currentFilters = {
-    category: [],
-    size: [],
-    price: 50000,
-    rating: [],
-    discount: [],
-    sort: 'newest'
-};
-
-function renderProducts(productsToRender) {
-    const grid = document.getElementById('mainProductGrid');
+// UI Rendering Functions
+function renderProducts(productsToRender, gridId) {
+    const grid = document.getElementById(gridId);
     if (!grid) return;
 
-    grid.innerHTML = '';
-    productsToRender.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card fade-in';
-        card.innerHTML = `
+    if (productsToRender.length === 0) {
+        grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--text-muted);">No models found matching your criteria.</div>';
+        return;
+    }
+
+    grid.innerHTML = productsToRender.map(product => `
+        <div class="product-card fade-in" onclick="location.href='product.html?id=${product.id}'">
             <div class="product-image-container">
-                <a href="product.html?id=${product.id}">
-                    <img src="${product.image}" alt="${product.name}" loading="lazy">
-                </a>
-                ${product.isNew ? '<div class="product-badge badge-new">NEW</div>' : ''}
-                ${product.isSale && !product.isNew ? '<div class="product-badge badge-sale">SALE</div>' : ''}
-                <div class="quick-view-overlay" onclick="openQuickView(${product.id})">QUICK VIEW</div>
+                ${product.new ? '<span class="product-badge badge-new">LATEST</span>' : ''}
+                ${product.discount > 0 ? `<span class="product-badge badge-sale" style="top: 45px;">-${product.discount}%</span>` : ''}
+                <img src="${product.image}" alt="${product.name}" loading="lazy">
+                <div class="quick-view-overlay" onclick="event.stopPropagation(); openQuickView(${product.id})">VIEW DETAILS</div>
             </div>
             <div class="product-info">
-                <p class="product-category">${product.category}</p>
-                <h4 class="product-name">${product.name}</h4>
+                <span class="product-category">${product.category}</span>
+                <h3 class="product-name">${product.name}</h3>
                 <div class="product-price">
-                    <span class="price">${formatPrice(product.price)}</span>
-                    ${product.originalPrice > product.price ? `<span class="original-price">${formatPrice(product.originalPrice)}</span>` : ''}
+                    <span>${formatPrice(product.price)}</span>
+                    ${product.discount > 0 ? `<span class="original-price">${formatPrice(product.originalPrice)}</span>` : ''}
                 </div>
-                <div class="product-rating" style="font-size: 12px; color: var(--accent-orange); margin-top: 5px;">
-                    ${renderStars(product.rating)} <span style="color: var(--text-lighter);">(${product.reviews})</span>
-                </div>
-                <button class="btn btn-primary add-to-cart-btn" style="width: 100%; margin-top: 15px; padding: 10px; font-size: 12px;" onclick="addToCart(${product.id})">ADD TO CART</button>
             </div>
-        `;
-        grid.appendChild(card);
-    });
+        </div>
+    `).join('');
 }
 
-function applyFilters() {
-    let filtered = products.filter(p => {
-        const catMatch = currentFilters.category.length === 0 || currentFilters.category.includes(p.category);
-        const sizeMatch = currentFilters.size.length === 0 || p.sizes.some(s => currentFilters.size.includes(s));
-        const priceMatch = p.price <= currentFilters.price;
-        const ratingMatch = currentFilters.rating.length === 0 || currentFilters.rating.some(r => p.rating >= parseInt(r));
-        const discountMatch = currentFilters.discount.length === 0 || currentFilters.discount.some(d => p.discount >= parseInt(d));
+// Quick View Modal
+window.openQuickView = function(productId) {
+    const product = products.find(p => p.id === productId);
+    const modal = document.getElementById('quickViewModal');
+    const body = document.getElementById('quickViewBody');
+
+    body.innerHTML = `
+        <div class="product-detail-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div class="main-image-container">
+                <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info-side">
+                <span class="product-category">${product.category}</span>
+                <h2>${product.name}</h2>
+                <div class="price-section" style="margin: 1rem 0;">
+                    <span class="current-price" style="font-size: 2rem; color: var(--accent-primary);">${formatPrice(product.price)}</span>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">${product.description}</p>
+                <div class="features-list">
+                    ${product.features.map(f => `<li style="list-style: none; margin-bottom: 0.5rem;">• ${f}</li>`).join('')}
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 2rem;" onclick="location.href='product.html?id=${product.id}'">VIEW MASTERPIECE</button>
+            </div>
+        </div>
+    `;
+
+    modal.style.display = 'flex';
+};
+
+// Filter and Sort Logic
+function filterAndSortProducts() {
+    let filtered = products.filter(product => {
+        const catMatch = activeFilters.category.length === 0 || activeFilters.category.includes(product.category);
+        const sizeMatch = activeFilters.size.length === 0 || product.sizes.some(s => activeFilters.size.includes(s));
+        const priceMatch = product.price <= activeFilters.price;
+        const ratingMatch = activeFilters.rating.length === 0 || product.rating >= Math.min(...activeFilters.rating);
+        const discountMatch = activeFilters.discount.length === 0 || product.discount >= Math.min(...activeFilters.discount);
+
         return catMatch && sizeMatch && priceMatch && ratingMatch && discountMatch;
     });
 
-    // Apply sorting
-    if (currentFilters.sort === 'price-low') {
-        filtered.sort((a, b) => a.price - b.price);
-    } else if (currentFilters.sort === 'price-high') {
-        filtered.sort((a, b) => b.price - a.price);
-    } else if (currentFilters.sort === 'rating') {
-        filtered.sort((a, b) => b.rating - a.rating);
-    } else if (currentFilters.sort === 'discount') {
-        filtered.sort((a, b) => b.discount - a.discount);
-    } else {
-        filtered.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
+    switch(currentSort) {
+        case 'price-low': filtered.sort((a, b) => a.price - b.price); break;
+        case 'price-high': filtered.sort((a, b) => b.price - a.price); break;
+        case 'rating': filtered.sort((a, b) => b.rating - a.rating); break;
+        case 'discount': filtered.sort((a, b) => b.discount - a.discount); break;
+        default: filtered.sort((a, b) => b.id - a.id);
     }
 
-    renderProducts(filtered);
+    renderProducts(filtered, 'mainProductGrid');
 }
 
-function addToCart(productId, size = null, color = null) {
-    const product = products.find(p => p.id === productId);
-    let cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
+// Cart Management
+window.openCartDrawer = function() {
+    document.getElementById('cartDrawer').classList.add('active');
+    document.getElementById('cartOverlay').classList.add('active');
+    updateCartDrawer();
+};
 
-    // If not specified, try to get from UI (for product page)
-    if (!size) {
-        const activeSize = document.querySelector('.size-btn.active');
-        size = activeSize ? activeSize.getAttribute('data-size') : (product.sizes[0] || 'OS');
-    }
-    if (!color) {
-        const activeColor = document.querySelector('.color-btn.active');
-        color = activeColor ? activeColor.getAttribute('data-color') : (product.colors[0] || 'Default');
-    }
+window.closeCartDrawer = function() {
+    document.getElementById('cartDrawer').classList.remove('active');
+    document.getElementById('cartOverlay').classList.remove('active');
+};
 
-    const qtyInput = document.getElementById('quantity');
-    const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
-
-    const existing = cart.find(item => item.id === productId && item.selectedSize === size && item.selectedColor === color);
-
-    if (existing) {
-        existing.quantity += quantity;
-    } else {
-        cart.push({
-            ...product,
-            quantity: quantity,
-            selectedSize: size,
-            selectedColor: color
-        });
-    }
-
-    localStorage.setItem('maven_cart', JSON.stringify(cart));
-    updateCartCount();
-    renderCartDrawer();
-    openCartDrawer();
-    showToast(`Added ${product.name} to cart!`);
-}
-
-function updateCartCount() {
-    const cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
-    const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
-}
-
-// Cart Drawer Logic
-function openCartDrawer() {
-    const drawer = document.getElementById('cartDrawer');
-    const overlay = document.getElementById('cartOverlay');
-    if (drawer && overlay) {
-        drawer.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-}
-
-function closeCartDrawer() {
-    const drawer = document.getElementById('cartDrawer');
-    const overlay = document.getElementById('cartOverlay');
-    if (drawer && overlay) {
-        drawer.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = 'auto';
-    }
-}
-
-function renderCartDrawer() {
+function updateCartDrawer() {
     const container = document.getElementById('cartDrawerItems');
     const totalEl = document.getElementById('cartDrawerTotal');
-    const cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
+    const countEl = document.querySelector('.cart-count');
 
     if (!container) return;
 
     if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align: center; margin-top: 50px; color: var(--text-lighter);">Your cart is empty.</p>';
-        if (totalEl) totalEl.textContent = formatPrice(0);
+        container.innerHTML = '<div style="text-align: center; padding: 3rem 0;"><p style="color: var(--text-muted);">Bag is empty</p></div>';
+        totalEl.textContent = formatPrice(0);
+        countEl.textContent = '0';
         return;
     }
 
-    container.innerHTML = '';
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-        const itemEl = document.createElement('div');
-        itemEl.className = 'cart-drawer-item';
-        itemEl.style.display = 'flex';
-        itemEl.style.gap = '15px';
-        itemEl.style.marginBottom = '20px';
-        itemEl.style.paddingBottom = '20px';
-        itemEl.style.borderBottom = '1px solid var(--border-color)';
-
-        itemEl.innerHTML = `
-            <div style="width: 80px; height: 100px; overflow: hidden; background: var(--bg-light);">
-                <img src="${item.image}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
+    container.innerHTML = cart.map((item, index) => `
+        <div class="cart-item" style="display: flex; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--border-dim);">
+            <img src="${item.image}" style="width: 80px; border-radius: 8px;">
             <div style="flex: 1;">
-                <h4 style="font-size: 14px; margin-bottom: 5px;">${item.name}</h4>
-                <p style="font-size: 11px; color: var(--text-lighter); margin-bottom: 5px;">${item.selectedSize} / ${item.selectedColor}</p>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div class="quantity-selector" style="height: 30px;">
-                        <button class="qty-btn" onclick="updateCartDrawerQty(${index}, -1)" style="width: 25px; height: 25px;">−</button>
-                        <input type="number" value="${item.quantity}" readonly style="width: 25px; font-size: 12px;">
-                        <button class="qty-btn" onclick="updateCartDrawerQty(${index}, 1)" style="width: 25px; height: 25px;">+</button>
-                    </div>
-                    <span style="font-weight: 700; font-size: 14px;">${formatPrice(item.price * item.quantity)}</span>
+                <h4 style="font-size: 0.9rem;">${item.name}</h4>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">${item.size} / ${item.color}</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.5rem;">
+                    <span>${item.quantity} x ${formatPrice(item.price)}</span>
+                    <button onclick="removeFromCart(${index})" style="background: none; border: none; color: var(--error); cursor: pointer;">Remove</button>
                 </div>
-                <button onclick="removeFromCartDrawer(${index})" style="background: none; border: none; color: var(--error); font-size: 10px; font-weight: 700; cursor: pointer; text-decoration: underline; margin-top: 5px;">REMOVE</button>
-            </div>
-        `;
-        container.appendChild(itemEl);
-    });
-
-    if (totalEl) totalEl.textContent = formatPrice(total);
-}
-
-function updateCartDrawerQty(index, delta) {
-    let cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
-    cart[index].quantity += delta;
-    if (cart[index].quantity < 1) cart[index].quantity = 1;
-    localStorage.setItem('maven_cart', JSON.stringify(cart));
-    renderCartDrawer();
-    updateCartCount();
-    if (typeof renderCart === 'function') renderCart(); // Update main cart page if present
-}
-
-function removeFromCartDrawer(index) {
-    let cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
-    cart.splice(index, 1);
-    localStorage.setItem('maven_cart', JSON.stringify(cart));
-    renderCartDrawer();
-    updateCartCount();
-    if (typeof renderCart === 'function') renderCart();
-}
-
-function toggleWishlist(productId) {
-    let wishlist = JSON.parse(localStorage.getItem('maven_wishlist')) || [];
-    const index = wishlist.indexOf(productId);
-    if (index > -1) {
-        wishlist.splice(index, 1);
-        showToast("Removed from wishlist");
-    } else {
-        wishlist.push(productId);
-        showToast("Added to wishlist");
-    }
-    localStorage.setItem('maven_wishlist', JSON.stringify(wishlist));
-}
-
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.className = 'toast fade-in';
-    toast.textContent = message;
-    document.body.appendChild(toast);
-    setTimeout(() => {
-        toast.classList.add('fade-out');
-        setTimeout(() => toast.remove(), 500);
-    }, 3000);
-}
-
-function openQuickView(productId) {
-    const product = products.find(p => p.id === productId);
-    const modal = document.getElementById('quickViewModal');
-    const body = document.getElementById('quickViewBody');
-    if (!modal || !product) return;
-
-    body.innerHTML = `
-        <div class="product-detail-grid" style="grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 0;">
-            <div class="main-image-container">
-                <img src="${product.image}" alt="${product.name}">
-            </div>
-            <div class="product-info-panel">
-                <p class="product-brand">MAVEN CORE</p>
-                <h2 style="font-size: 24px; margin-bottom: 10px;">${product.name}</h2>
-                <div class="product-price" style="margin-bottom: 20px;">${formatPrice(product.price)}</div>
-                <p class="product-description" style="font-size: 14px; margin-bottom: 20px;">${product.description.substring(0, 150)}...</p>
-                <a href="product.html?id=${product.id}" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW FULL DETAILS</a>
-                <button class="btn btn-primary" style="width: 100%;" onclick="addToCart(${product.id})">ADD TO CART</button>
             </div>
         </div>
-    `;
-    modal.style.display = 'flex';
+    `).join('');
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    totalEl.textContent = formatPrice(total);
+    countEl.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    localStorage.setItem('maven_cart', JSON.stringify(cart));
 }
 
+window.removeFromCart = function(index) {
+    cart.splice(index, 1);
+    updateCartDrawer();
+    showToast("Item removed from bag");
+};
+
+// Event Listeners Initialization
 document.addEventListener('DOMContentLoaded', () => {
     // Initial Render
-    renderProducts(products);
-    updateCartCount();
-    renderCartDrawer();
+    renderProducts(products.filter(p => p.featured), 'featuredGrid');
+    renderProducts(products, 'mainProductGrid');
+    updateCartDrawer();
 
-    // Scroll handling for sticky header
-    window.addEventListener('scroll', throttle(() => {
+    // Sticky Header
+    window.addEventListener('scroll', () => {
         const header = document.querySelector('.header');
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
-            if (!document.title.includes('Product Detail') && !document.title.includes('Shopping Cart') && !document.title.includes('Checkout') && !document.title.includes('My Account')) {
-                header.classList.remove('scrolled');
-            }
+            header.classList.remove('scrolled');
         }
-    }, 100));
+    });
 
-    // Search Functionality
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', debounce((e) => {
-            const query = e.target.value.toLowerCase();
-            const shopSection = document.getElementById('shop');
-            if (query.length > 2) {
-                const results = products.filter(p =>
-                    p.name.toLowerCase().includes(query) ||
-                    p.category.toLowerCase().includes(query)
-                );
-                renderProducts(results);
-                if (shopSection && window.scrollY < shopSection.offsetTop - 200) {
-                    window.scrollTo({ top: shopSection.offsetTop - 100, behavior: 'smooth' });
-                }
-            } else if (query.length === 0) {
-                renderProducts(products);
-            }
-        }, 300));
+    // Mobile Menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mainNav = document.getElementById('mainNav');
+    if (mobileBtn) {
+        mobileBtn.addEventListener('click', () => {
+            mobileBtn.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
     }
 
-    // Filters and Sorting
-    const catFilters = document.querySelectorAll('#categoryFilters input');
-    catFilters.forEach(input => {
-        input.addEventListener('change', () => {
-            if (input.checked) currentFilters.category.push(input.value);
-            else currentFilters.category = currentFilters.category.filter(c => c !== input.value);
-            applyFilters();
+    // Modal Close
+    const closeBtn = document.querySelector('.close-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            document.getElementById('quickViewModal').style.display = 'none';
         });
-    });
+    }
 
-    const sizeFilters = document.querySelectorAll('#sizeFilters input');
-    sizeFilters.forEach(input => {
+    // Filters Listeners
+    const categoryFilters = document.querySelectorAll('#categoryFilters input');
+    categoryFilters.forEach(input => {
         input.addEventListener('change', () => {
-            if (input.checked) currentFilters.size.push(input.value);
-            else currentFilters.size = currentFilters.size.filter(s => s !== input.value);
-            applyFilters();
-        });
-    });
-
-    const ratingFilters = document.querySelectorAll('#ratingFilters input');
-    ratingFilters.forEach(input => {
-        input.addEventListener('change', () => {
-            if (input.checked) currentFilters.rating.push(input.value);
-            else currentFilters.rating = currentFilters.rating.filter(r => r !== input.value);
-            applyFilters();
-        });
-    });
-
-    const discountFilters = document.querySelectorAll('#discountFilters input');
-    discountFilters.forEach(input => {
-        input.addEventListener('change', () => {
-            if (input.checked) currentFilters.discount.push(input.value);
-            else currentFilters.discount = currentFilters.discount.filter(d => d !== input.value);
-            applyFilters();
+            if (input.checked) activeFilters.category.push(input.value);
+            else activeFilters.category = activeFilters.category.filter(c => c !== input.value);
+            filterAndSortProducts();
         });
     });
 
@@ -844,159 +326,179 @@ document.addEventListener('DOMContentLoaded', () => {
     const priceLabel = document.getElementById('priceLabel');
     if (priceRange) {
         priceRange.addEventListener('input', (e) => {
-            currentFilters.price = e.target.value;
-            priceLabel.textContent = `₹0 - ₹${parseInt(e.target.value).toLocaleString('en-IN')}`;
-            applyFilters();
+            activeFilters.price = parseInt(e.target.value);
+            priceLabel.textContent = `₹0 - ${formatPrice(activeFilters.price)}`;
+            filterAndSortProducts();
         });
     }
 
     const sortSelect = document.getElementById('sortSelect');
     if (sortSelect) {
         sortSelect.addEventListener('change', (e) => {
-            currentFilters.sort = e.target.value;
-            applyFilters();
+            currentSort = e.target.value;
+            filterAndSortProducts();
         });
     }
 
-    // Modal Close
-    const modal = document.getElementById('quickViewModal');
-    const closeModal = document.querySelector('.close-modal');
-    if (modal && closeModal) {
-        closeModal.addEventListener('click', () => modal.style.display = 'none');
-        window.addEventListener('click', (e) => {
-            if (e.target === modal) modal.style.display = 'none';
-        });
-    }
+    // Search Functionality
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        // Handle search on index page or redirect from other pages
+        const handleSearch = (query) => {
+            const filtered = products.filter(p =>
+                p.name.toLowerCase().includes(query) ||
+                p.category.toLowerCase().includes(query)
+            );
 
-    // Featured Drops
-    const featuredGrid = document.querySelector('.featured-grid');
-    if (featuredGrid) {
-        const featured = products.filter(p => p.isNew).slice(0, 3);
-        featuredGrid.innerHTML = '';
-        featured.forEach(product => {
-            const item = document.createElement('div');
-            item.className = 'product-card';
-            item.innerHTML = `
-                <div class="product-image-container">
-                    <a href="product.html?id=${product.id}">
-                        <img src="${product.image}" alt="${product.name}">
-                    </a>
-                </div>
-                <div class="product-info">
-                    <h4 class="product-name">${product.name}</h4>
-                    <p class="product-price">${formatPrice(product.price)}</p>
-                </div>
-            `;
-            featuredGrid.appendChild(item);
-        });
-    }
+            const grid = document.getElementById('mainProductGrid');
+            if (grid) {
+                renderProducts(filtered, 'mainProductGrid');
+                // Scroll to shop section if searching
+                if (query) grid.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // If not on index page, redirect with search param
+                window.location.href = `index.html?search=${encodeURIComponent(query)}#shop`;
+            }
+        };
 
-    // Testimonials Render
-    const testimonialGrid = document.getElementById('testimonialGrid');
-    if (testimonialGrid) {
-        const testimonials = [
-            { name: "DAVID CHEN", role: "Architect", text: "MAVEN has completely redefined my wardrobe. The quality is unmatched.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" },
-            { name: "MARCUS REED", role: "Creative Director", text: "I appreciate the minimalist approach. Pure quality and great silhouettes.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" },
-            { name: "ALEX RIVERA", role: "Software Engineer", text: "Fast shipping and incredible packaging. A brand that truly cares.", image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop" }
-        ];
-
-        testimonials.forEach(t => {
-            const card = document.createElement('div');
-            card.className = 'testimonial-card';
-            card.innerHTML = `
-                <div class="testimonial-image">
-                    <img src="${t.image}" alt="${t.name}">
-                </div>
-                <p class="testimonial-text">"${t.text}"</p>
-                <p class="testimonial-author">${t.name}</p>
-                <p class="testimonial-role">${t.role}</p>
-            `;
-            testimonialGrid.appendChild(card);
-        });
-    }
-
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('mobileMenuBtn');
-    const mainNav = document.getElementById('mainNav');
-    if (menuBtn && mainNav) {
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
-            mainNav.classList.toggle('active');
-        });
-    }
-
-    // Product Gallery switching
-    const mainImage = document.getElementById('mainImage');
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            mainImage.src = thumb.src;
-            thumbnails.forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
-        });
-    });
-
-    // Size selection
-    const sizeBtns = document.querySelectorAll('.size-btn');
-    sizeBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            sizeBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        });
-    });
-
-    // Color selection
-    const colorBtns = document.querySelectorAll('.color-btn');
-    const selectedColorText = document.getElementById('selectedColor');
-    colorBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            colorBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            if (selectedColorText) {
-                selectedColorText.textContent = btn.getAttribute('data-color');
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSearch(e.target.value.toLowerCase());
             }
         });
-    });
 
-    // Quantity selector
-    const qtyInput = document.getElementById('quantity');
-    const minusBtn = document.querySelector('.qty-btn.minus');
-    const plusBtn = document.querySelector('.qty-btn.plus');
-    if (qtyInput) {
-        minusBtn.addEventListener('click', () => {
-            if (qtyInput.value > 1) qtyInput.value--;
-        });
-        plusBtn.addEventListener('click', () => {
-            if (qtyInput.value < 10) qtyInput.value++;
-        });
+        // Check for search param on load (for index page)
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchQuery = urlParams.get('search');
+        if (searchQuery && document.getElementById('mainProductGrid')) {
+            searchInput.value = searchQuery;
+            handleSearch(searchQuery.toLowerCase());
+        }
     }
-
-    // Info Tabs
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const tabId = btn.getAttribute('data-tab');
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        });
-    });
-
-    // Smooth scroll for anchors
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
 });
+
+// Product Detail Page Logic
+if (window.location.pathname.includes('product.html')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+    const product = products.find(p => p.id === productId);
+
+    if (product) {
+        document.title = `${product.name} | AURA LUXE`;
+
+        const renderDetail = () => {
+            const container = document.querySelector('.product-detail-grid');
+            if (!container) return;
+
+            const stars = '★'.repeat(Math.floor(product.rating)) + '☆'.repeat(5 - Math.floor(product.rating));
+
+            container.innerHTML = `
+                <div class="product-images-side">
+                    <div class="main-image-container glass">
+                        <img src="${product.image}" id="mainProductImg">
+                    </div>
+                </div>
+                <div class="product-info-side">
+                    <span class="product-category">${product.category}</span>
+                    <h1 class="product-title">${product.name}</h1>
+                    <div class="price-section">
+                        <span class="current-price">${formatPrice(product.price)}</span>
+                        ${product.discount > 0 ? `<span class="discount-badge">-${product.discount}% INTRO OFFER</span>` : ''}
+                    </div>
+                    <div class="rating-section">
+                        <span class="stars">${stars}</span>
+                        <span class="review-count">(${product.reviews} Verified Reviews)</span>
+                    </div>
+                    <p class="product-description">${product.description}</p>
+
+                    <div class="purchase-options">
+                        <div class="option-group">
+                            <label>SELECT SIZE / VARIANT</label>
+                            <div class="size-selector">
+                                ${product.sizes.map(s => `<button class="size-btn ${s === product.sizes[0] ? 'active' : ''}" onclick="selectSize(this)">${s}</button>`).join('')}
+                            </div>
+                        </div>
+                        <div class="option-group">
+                            <label>AVAILABLE FINISHES</label>
+                            <div class="color-selector">
+                                ${product.colors.map(c => `<button class="btn btn-outline region-btn ${c === product.colors[0] ? 'active' : ''}" onclick="selectColor(this)" style="padding: 0.5rem 1rem; font-size: 0.8rem;">${c}</button>`).join('')}
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary add-to-cart-large" onclick="addToCart()">ADD TO BAG</button>
+                        </div>
+                    </div>
+
+                    <div class="additional-info" style="margin-top: 3rem;">
+                        <div class="info-tabs">
+                            <button class="tab-btn active" onclick="switchTab(this, 'specs')">SPECIFICATIONS</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'sla')">CRAFTSMANSHIP</button>
+                        </div>
+                        <div id="specs" class="tab-content active">
+                            <table class="specs-table">
+                                ${product.features.map(f => `<tr><td>Feature</td><td>${f}</td></tr>`).join('')}
+                                <tr><td>Warranty</td><td>Lifetime</td></tr>
+                                <tr><td>Authenticity</td><td>Certified</td></tr>
+                            </table>
+                        </div>
+                        <div id="sla" class="tab-content">
+                            <p style="color: var(--text-muted);">Aura Luxe pieces are handcrafted by master artisans using only the finest materials. Each item undergoes rigorous quality control to ensure it meets our heritage standards.</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            // Inject Related Products
+            const related = products.filter(p => p.id !== product.id && p.category === product.category).slice(0, 4);
+            if (related.length === 0) {
+                // Fallback to any other products if no same-category ones
+                const fallback = products.filter(p => p.id !== product.id).slice(0, 4);
+                renderProducts(fallback, 'relatedProductsGrid');
+            } else {
+                renderProducts(related, 'relatedProductsGrid');
+            }
+        };
+        document.addEventListener('DOMContentLoaded', renderDetail);
+    }
+}
+
+window.selectSize = function(btn) {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+};
+
+window.selectColor = function(btn) {
+    document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+};
+
+window.switchTab = function(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+};
+
+window.addToCart = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+    const product = products.find(p => p.id === productId);
+
+    const size = document.querySelector('.size-btn.active').textContent;
+    const color = document.querySelector('.region-btn.active').textContent;
+
+    const cartItem = {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+        size: size,
+        color: color,
+        quantity: 1
+    };
+
+    cart.push(cartItem);
+    updateCartDrawer();
+    openCartDrawer();
+    showToast("Added to bag successfully");
+};
