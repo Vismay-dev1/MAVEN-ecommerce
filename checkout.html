@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | MAVEN</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header scrolled">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">MAVEN</a>
+            </div>
+            <div class="checkout-step-indicator">
+                <div class="step active" data-step="1">1</div>
+                <div class="step" data-step="2">2</div>
+                <div class="step" data-step="3">3</div>
+                <div class="step" data-step="4">4</div>
+            </div>
+        </div>
+    </header>
+
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-container">
+                <div class="checkout-main">
+                    <form id="checkoutForm">
+                        <div class="checkout-step active" id="step1">
+                            <h3>SHIPPING ADDRESS</h3>
+                            <div class="form-grid">
+                                <div class="form-group"><label for="firstName">First Name</label><input type="text" id="firstName" required></div>
+                                <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" required></div>
+                                <div class="form-group full"><label for="address">Address</label><input type="text" id="address" required></div>
+                                <div class="form-group"><label for="city">City</label><input type="text" id="city" required></div>
+                                <div class="form-group"><label for="zipCode">ZIP Code</label><input type="text" id="zipCode" required></div>
+                                <div class="form-group full"><label for="email">Email</label><input type="email" id="email" required></div>
+                            </div>
+                            <button type="button" class="btn btn-primary next-step">CONTINUE TO SHIPPING</button>
+                        </div>
+                        <div class="checkout-step" id="step2">
+                            <h3>SHIPPING METHOD</h3>
+                            <div class="shipping-options">
+                                <label class="shipping-option"><input type="radio" name="shipping" value="0" checked><div class="option-details"><span class="option-name">Standard Shipping (5-7 days)</span><span class="option-price">FREE</span></div></label>
+                                <label class="shipping-option"><input type="radio" name="shipping" value="500"><div class="option-details"><span class="option-name">Express Shipping (2-3 days)</span><span class="option-price">₹500</span></div></label>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-outline prev-step">BACK</button>
+                                <button type="button" class="btn btn-primary next-step">CONTINUE TO PAYMENT</button>
+                            </div>
+                        </div>
+                        <div class="checkout-step" id="step3">
+                            <h3>PAYMENT</h3>
+                            <div class="form-grid">
+                                <div class="form-group full"><label for="paymentMethod">Payment Method</label>
+                                    <select id="paymentMethod" style="width: 100%; padding: 15px; border: 1px solid var(--border-gray); font-family: var(--font-body);">
+                                        <option value="card">Credit/Debit Card</option>
+                                        <option value="gpay">Google Pay</option>
+                                        <option value="cod">Cash on Delivery (COD)</option>
+                                    </select>
+                                </div>
+                                <div id="cardDetails" class="form-grid" style="grid-column: span 2;">
+                                    <div class="form-group full"><label for="cardNumber">Card Number</label><input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX"></div>
+                                    <div class="form-group"><label for="expiryDate">Expiry Date</label><input type="text" id="expiryDate" placeholder="MM/YY"></div>
+                                    <div class="form-group"><label for="cvv">CVV</label><input type="password" id="cvv" placeholder="XXX"></div>
+                                </div>
+                            </div>
+                            <div class="security-badges" style="margin-top: 20px; display: flex; gap: 20px; align-items: center; opacity: 0.6;">
+                                <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" width="30">
+                                <img src="https://img.icons8.com/color/48/000000/mastercard.png" alt="Mastercard" width="30">
+                                <img src="https://img.icons8.com/ios-filled/50/000000/lock.png" alt="SSL" width="20">
+                                <span style="font-size: 10px; font-weight: 700;">SECURE SSL ENCRYPTION</span>
+                            </div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-outline prev-step">BACK</button>
+                                <button type="button" class="btn btn-primary next-step">REVIEW ORDER</button>
+                            </div>
+                        </div>
+                        <div class="checkout-step" id="step4">
+                            <h3>REVIEW ORDER</h3>
+                            <div id="orderReviewContent"></div>
+                            <div class="step-actions">
+                                <button type="button" class="btn btn-outline prev-step">BACK</button>
+                                <button type="submit" class="btn btn-primary">PLACE ORDER</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="order-summary-side">
+                    <h3>ORDER SUMMARY</h3>
+                    <div id="summaryItems"></div>
+                    <div class="summary-details">
+                        <div class="summary-row"><span>Subtotal</span><span id="summarySubtotal">₹0</span></div>
+                        <div class="summary-row"><span>Shipping</span><span id="summaryShipping">₹0</span></div>
+                        <div class="summary-row total"><span>TOTAL</span><span id="summaryTotal">₹0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SHOP</h4>
+                    <ul>
+                        <li><a href="index.html#shop">New Arrivals</a></li>
+                        <li><a href="index.html#categories">Collections</a></li>
+                        <li><a href="index.html#shop">Sale</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>FOLLOW</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter/X</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MAVEN. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentStep = 1;
+            const steps = document.querySelectorAll('.checkout-step');
+            const indicators = document.querySelectorAll('.step');
+            const summaryItems = document.getElementById('summaryItems');
+            const cart = JSON.parse(localStorage.getItem('maven_cart')) || [];
+            const discount = parseFloat(localStorage.getItem('maven_discount')) || 0;
+
+            if (cart.length === 0) {
+                window.location.href = 'cart.html';
+                return;
+            }
+
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+                const div = document.createElement('div');
+                div.className = 'summary-item';
+                div.innerHTML = `<span>${item.name} x ${item.quantity}</span><span>${formatPrice(item.price * item.quantity)}</span>`;
+                summaryItems.appendChild(div);
+            });
+            const discountedSubtotal = subtotal * (1 - discount);
+            document.getElementById('summarySubtotal').textContent = formatPrice(discountedSubtotal);
+            updateTotal();
+
+            function updateTotal() {
+                const shipping = parseFloat(document.querySelector('input[name="shipping"]:checked').value);
+                document.getElementById('summaryShipping').textContent = shipping === 0 ? 'FREE' : formatPrice(shipping);
+                document.getElementById('summaryTotal').textContent = formatPrice(discountedSubtotal + shipping);
+            }
+
+            document.querySelectorAll('input[name="shipping"]').forEach(input => {
+                input.addEventListener('change', updateTotal);
+            });
+
+            document.getElementById('paymentMethod').addEventListener('change', (e) => {
+                const cardDetails = document.getElementById('cardDetails');
+                cardDetails.style.display = e.target.value === 'card' ? 'grid' : 'none';
+            });
+
+            function validateEmail(email) {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            function validateCard(number) {
+                return /^\d{4}\s?\d{4}\s?\d{4}\s?\d{4}$/.test(number.replace(/\s/g, ''));
+            }
+
+            document.querySelectorAll('.next-step').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const inputs = steps[currentStep-1].querySelectorAll('input[required]');
+                    let valid = true;
+                    inputs.forEach(input => {
+                        let fieldValid = !!input.value;
+
+                        if (fieldValid && input.type === 'email') {
+                            fieldValid = validateEmail(input.value);
+                        }
+                        if (fieldValid && input.id === 'cardNumber' && document.getElementById('paymentMethod').value === 'card') {
+                            fieldValid = validateCard(input.value);
+                        }
+
+                        if (!fieldValid) {
+                            input.style.borderColor = 'var(--error)';
+                            valid = false;
+                        } else {
+                            input.style.borderColor = 'var(--border-color)';
+                        }
+                    });
+                    if (valid) {
+                        if (currentStep === 3) {
+                            renderReview();
+                        }
+                        steps[currentStep-1].classList.remove('active');
+                        indicators[currentStep-1].classList.remove('active');
+                        currentStep++;
+                        steps[currentStep-1].classList.add('active');
+                        indicators[currentStep-1].classList.add('active');
+                    }
+                });
+            });
+
+            function renderReview() {
+                const reviewContent = document.getElementById('orderReviewContent');
+                const shipping = document.querySelector('input[name="shipping"]:checked').parentElement.querySelector('.option-name').textContent;
+                const payment = document.getElementById('paymentMethod').options[document.getElementById('paymentMethod').selectedIndex].text;
+                const email = document.getElementById('email').value;
+                const address = `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}, ${document.getElementById('address').value}, ${document.getElementById('city').value}, ${document.getElementById('zipCode').value}`;
+
+                reviewContent.innerHTML = `
+                    <div style="background: var(--bg-light); padding: var(--space-l); margin-bottom: var(--space-l);">
+                        <h4 style="margin-bottom: 10px;">SHIPPING TO:</h4>
+                        <p style="font-size: 14px;">${address}</p>
+                        <p style="font-size: 14px; margin-top: 5px;">Email: ${email}</p>
+                    </div>
+                    <div style="background: var(--bg-light); padding: var(--space-l); margin-bottom: var(--space-l);">
+                        <h4 style="margin-bottom: 10px;">SHIPPING METHOD:</h4>
+                        <p style="font-size: 14px;">${shipping}</p>
+                    </div>
+                    <div style="background: var(--bg-light); padding: var(--space-l); margin-bottom: var(--space-l);">
+                        <h4 style="margin-bottom: 10px;">PAYMENT METHOD:</h4>
+                        <p style="font-size: 14px;">${payment}</p>
+                    </div>
+                `;
+            }
+
+            document.querySelectorAll('.prev-step').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    steps[currentStep-1].classList.remove('active');
+                    indicators[currentStep-1].classList.remove('active');
+                    currentStep--;
+                    steps[currentStep-1].classList.add('active');
+                    indicators[currentStep-1].classList.add('active');
+                });
+            });
+
+            document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                localStorage.removeItem('maven_cart');
+                localStorage.removeItem('maven_discount');
+                alert('Order placed successfully!');
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html>

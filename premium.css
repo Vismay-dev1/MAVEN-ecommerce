@@ -1,0 +1,162 @@
+/* Premium Enhancements for MAVEN */
+
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    --accent-orange: #ff4d00;
+    --primary-black: #000000;
+}
+
+/* Glassmorphism Header */
+.header.scrolled {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(15px) !important;
+    -webkit-backdrop-filter: blur(15px) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+}
+
+/* Reveal on Scroll */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced Product Cards */
+.product-card {
+    transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--premium-shadow);
+}
+
+.product-image-container {
+    overflow: hidden;
+}
+
+.product-image-container img {
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.product-card:hover .product-image-container img {
+    transform: scale(1.1);
+}
+
+/* Custom Selection */
+::selection {
+    background: var(--accent-orange);
+    color: white;
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Mobile Optimisations */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 15px !important;
+    }
+
+    .product-card .product-info {
+        padding: 10px !important;
+    }
+
+    .product-name {
+        font-size: 13px !important;
+        margin-bottom: 5px !important;
+    }
+
+    .price {
+        font-size: 14px !important;
+    }
+
+    .btn {
+        padding: 12px 20px !important;
+        font-size: 11px !important;
+    }
+
+    /* Sticky Mobile CTA for Product Page */
+    .action-buttons {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 15px 20px;
+        box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+        display: flex;
+        gap: 10px;
+        z-index: 1000;
+        border-top: 1px solid #eee;
+    }
+
+    .add-to-cart-large {
+        flex: 1;
+        margin-bottom: 0 !important;
+    }
+
+    .wishlist-btn {
+        width: 50px !important;
+        height: 50px !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Adjust main content padding to account for sticky footer */
+    body.has-sticky-footer {
+        padding-bottom: 80px;
+    }
+
+    /* Mobile Filters */
+    .filters-sidebar {
+        display: none; /* Can be toggled with JS later */
+    }
+
+    .showcase-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Header adjustments */
+    .header-icons .search-container {
+        display: none; /* Hide full search on mobile */
+    }
+
+    .mobile-menu-btn {
+        display: flex !important;
+    }
+}
+
+/* Tap target improvements */
+a, button, .category-card, .product-card {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}

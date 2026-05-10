@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover premium menswear at MAVEN. High-quality materials and modern tailoring for the contemporary man.">
+    <meta name="theme-color" content="#000000">
+    <meta property="og:title" content="Product Detail | MAVEN">
+    <meta property="og:type" content="product">
+    <title>Product Detail | MAVEN</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="premium.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-512.png">
+</head>
+<body class="has-sticky-footer">
+    <header class="header scrolled">
+        <div class="container nav-container">
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="logo">
+                <a href="index.html">MAVEN</a>
+            </div>
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html#home">HOME</a></li>
+                    <li><a href="index.html#shop">SHOP</a></li>
+                    <li><a href="index.html#categories">COLLECTIONS</a></li>
+                    <li><a href="index.html#philosophy">ABOUT</a></li>
+                </ul>
+            </nav>
+            <div class="header-icons">
+                <div class="search-container">
+                    <img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search">
+                    <input type="text" id="searchInput" placeholder="Search...">
+                </div>
+                <a href="account.html" class="icon account-icon" aria-label="Account">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
+                </a>
+                <div class="icon cart-icon" id="cartIconTrigger" aria-label="Cart" onclick="openCartDrawer()">
+                    <img src="https://img.icons8.com/material-outlined/24/000000/shopping-cart.png" alt="Cart">
+                    <span class="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3>YOUR CART</h3>
+            <span class="close-cart" onclick="closeCartDrawer()">&times;</span>
+        </div>
+        <div class="cart-drawer-items" id="cartDrawerItems"></div>
+        <div class="cart-drawer-footer">
+            <div class="summary-row" style="margin-bottom: 15px; font-weight: 700;">
+                <span>SUBTOTAL</span>
+                <span id="cartDrawerTotal">₹0</span>
+            </div>
+            <p style="font-size: 11px; color: var(--text-light); margin-bottom: 20px;">FREE delivery on orders above ₹3,000</p>
+            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW CART</a>
+            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">CHECKOUT</a>
+        </div>
+    </div>
+
+    <div class="breadcrumb">
+        <div class="container">
+            <p id="breadcrumbPath"><a href="index.html">Home</a> / <a href="#">Shop</a> / Product</p>
+        </div>
+    </div>
+
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-detail-grid" id="productDetailGrid"></div>
+
+            <div class="additional-info">
+                <div class="info-tabs">
+                    <button class="tab-btn active" data-tab="specifications">SPECIFICATIONS</button>
+                    <button class="tab-btn" data-tab="shipping">SHIPPING & RETURNS</button>
+                    <button class="tab-btn" data-tab="care">CARE GUIDE</button>
+                </div>
+                <div class="tab-content active" id="specifications">
+                    <div id="specsTableContainer"></div>
+                </div>
+                <div class="tab-content" id="shipping">
+                    <h4>Shipping Information</h4>
+                    <p>Free standard shipping on orders over ₹3,000. Estimated delivery: 3-5 business days.</p>
+                    <h4 style="margin-top: 20px;">Returns & Exchanges</h4>
+                    <p>We offer a 30-day return policy for all unworn items in their original packaging.</p>
+                </div>
+                <div class="tab-content" id="care">
+                    <div id="careInstructionsContainer"></div>
+                </div>
+            </div>
+
+            <div class="reviews-section">
+                <div class="section-title">
+                    <h2>CUSTOMER REVIEWS</h2>
+                </div>
+                <div class="review-filters" style="margin-bottom: 30px; display: flex; gap: 20px; justify-content: center;">
+                    <button class="tab-btn active" id="filterAll" onclick="filterReviews(0)">ALL REVIEWS</button>
+                    <button class="tab-btn" id="filter5" onclick="filterReviews(5)">5 STARS</button>
+                </div>
+                <div class="reviews-container" id="reviewsContainer"></div>
+            </div>
+
+            <div class="related-products">
+                <div class="section-title">
+                    <h2>YOU MAY ALSO LIKE</h2>
+                </div>
+                <div class="product-grid" id="relatedProductsGrid"></div>
+            </div>
+
+            <div class="recently-viewed" style="margin-top: 100px;">
+                <div class="section-title">
+                    <h2>RECENTLY VIEWED</h2>
+                </div>
+                <div class="product-grid" id="recentlyViewedGrid"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h4>ABOUT</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SHOP</h4>
+                    <ul>
+                        <li><a href="index.html#shop">New Arrivals</a></li>
+                        <li><a href="index.html#categories">Collections</a></li>
+                        <li><a href="#">Sale</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>SUPPORT</h4>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>FOLLOW</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter/X</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MAVEN. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <div id="sizeGuideModal" class="modal">
+        <div class="modal-content" style="max-width: 600px;">
+            <span class="close-modal" onclick="document.getElementById('sizeGuideModal').style.display='none'">&times;</span>
+            <h3>SIZE GUIDE</h3>
+            <table class="specs-table" style="margin-top: 20px;">
+                <thead>
+                    <tr><th>Size</th><th>Chest (cm)</th><th>Waist (cm)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>XS</td><td>86-91</td><td>71-76</td></tr>
+                    <tr><td>S</td><td>91-96</td><td>76-81</td></tr>
+                    <tr><td>M</td><td>96-101</td><td>81-86</td></tr>
+                    <tr><td>L</td><td>101-106</td><td>86-91</td></tr>
+                    <tr><td>XL</td><td>106-111</td><td>91-96</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="premium.js"></script>
+    <script>
+        const allReviews = [
+            { rating: 5, date: "Oct 12, 2024", title: "Excellent Quality", text: "The material feels very premium and the fit is exactly as described.", author: "James W." },
+            { rating: 5, date: "Oct 15, 2024", title: "Perfect Fit", text: "I was worried about the size, but the guide helped a lot. Perfect!", author: "Sarah K." },
+            { rating: 4, date: "Oct 18, 2024", title: "Great Silhouette", text: "Love the minimalist design. It's a bit heavier than I expected.", author: "Michael S." },
+            { rating: 5, date: "Oct 20, 2024", title: "Highly Recommend", text: "Fast shipping and incredible packaging. Truly a luxury experience.", author: "Alex R." },
+            { rating: 5, date: "Oct 22, 2024", title: "Best Purchase", text: "This is now my go-to piece for everything. Worth every penny.", author: "David C." }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = parseInt(params.get('id')) || 1;
+            const product = products.find(p => p.id === productId);
+
+            if (product) {
+                addToRecentlyViewed(productId);
+                document.title = `${product.name} | MAVEN`;
+                document.getElementById('breadcrumbPath').innerHTML = `<a href="index.html">Home</a> / <a href="index.html#shop">${product.category}</a> / ${product.name}`;
+
+                const detailGrid = document.getElementById('productDetailGrid');
+                detailGrid.innerHTML = `
+                    <div class="product-gallery">
+                        <div class="main-image-container">
+                            <img id="mainImage" src="${product.image}" alt="${product.name}">
+                            <span class="zoom-icon" id="zoomTrigger">🔍 ZOOM</span>
+                        </div>
+                        <div class="thumbnail-strip">
+                            ${product.images.map((img, i) => `<img src="${img}" alt="View ${i+1}" class="thumbnail ${i === 0 ? 'active' : ''}">`).join('')}
+                        </div>
+                    </div>
+                    <div class="product-info-panel">
+                        <p class="product-brand">${product.brand}</p>
+                        <h1 class="product-title">${product.name}</h1>
+                        <div class="price-section">
+                            <span class="current-price">${formatPrice(product.price)}</span>
+                            ${product.originalPrice > product.price ? `<span class="original-price">${formatPrice(product.originalPrice)}</span><span class="discount-badge">-${Math.round((1 - product.price/product.originalPrice)*100)}%</span>` : ''}
+                        </div>
+                        <div class="rating-section">
+                            <div class="stars">${renderStars(product.rating)}</div>
+                            <span class="review-count">(${product.reviews} reviews)</span>
+                        </div>
+                        <p class="stock-status ${product.inStock ? 'in-stock' : 'out-of-stock'}">${product.inStock ? '✓ IN STOCK' : '✕ OUT OF STOCK'}</p>
+                        <p class="product-description">${product.description}</p>
+                        <ul class="features-list">${product.features.map(f => `<li>${f}</li>`).join('')}</ul>
+                        <div class="purchase-options">
+                            <div class="option-group"><label>SIZE</label><div class="size-selector">${product.sizes.map(s => `<button class="size-btn" data-size="${s}">${s}</button>`).join('')}</div></div>
+                            <div class="option-group"><label>COLOR</label><div class="color-selector">${product.colors.map(c => `<button class="color-btn" style="background-color: ${c.toLowerCase()};" data-color="${c}"></button>`).join('')}</div></div>
+                            <div class="option-group"><label>QUANTITY</label><div class="quantity-selector"><button class="qty-btn minus">−</button><input type="number" id="quantity" value="1" min="1" max="10"><button class="qty-btn plus">+</button></div></div>
+                            <div class="action-buttons">
+                                <button class="btn btn-primary add-to-cart-large" onclick="addToCart(${product.id})">ADD TO CART</button>
+                                <button class="wishlist-btn" onclick="toggleWishlist(${product.id})">♡</button>
+                            </div>
+                            <div class="share-buttons" style="margin-top: 30px; display: flex; gap: 20px; align-items: center;">
+                                <span style="font-size: 12px; font-weight: 700;">SHARE:</span>
+                                <a href="#"><img src="https://img.icons8.com/material-outlined/20/000000/facebook-f.png" alt="FB"></a>
+                                <a href="#"><img src="https://img.icons8.com/material-outlined/20/000000/twitter.png" alt="TW"></a>
+                                <a href="#"><img src="https://img.icons8.com/material-outlined/20/000000/pinterest.png" alt="PIN"></a>
+                            </div>
+                            <div class="size-guide-trigger" style="margin-top: 20px;"><button onclick="openSizeGuide()" style="background: none; border: none; text-decoration: underline; font-size: 12px; cursor: pointer; font-weight: 600;">VIEW SIZE GUIDE</button></div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('specsTableContainer').innerHTML = `<table class="specs-table"><tr><td>Material</td><td>${product.material}</td></tr><tr><td>Category</td><td>${product.category}</td></tr><tr><td>Subcategory</td><td>${product.subcategory}</td></tr></table>`;
+                document.getElementById('careInstructionsContainer').innerHTML = `<p>${product.careInstructions}</p>`;
+
+                renderReviews(0);
+
+                const relatedGrid = document.getElementById('relatedProductsGrid');
+                const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
+                related.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">${formatPrice(p.price)}</p></div>`;
+                    relatedGrid.appendChild(card);
+                });
+
+                renderRecentlyViewed(productId);
+                attachProductListeners();
+            }
+        });
+
+        function openSizeGuide() { document.getElementById('sizeGuideModal').style.display = 'flex'; }
+
+        function renderReviews(minRating) {
+            const container = document.getElementById('reviewsContainer');
+            container.innerHTML = '';
+            const filtered = minRating === 0 ? allReviews : allReviews.filter(r => r.rating >= minRating);
+            filtered.forEach(r => {
+                const item = document.createElement('div');
+                item.className = 'review-item';
+                item.innerHTML = `<div class="review-header"><div class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div><span class="review-date">${r.date}</span></div><h4 class="review-title">${r.title}</h4><p class="review-text">${r.text}</p><p class="review-author">${r.author}</p>`;
+                container.appendChild(item);
+            });
+        }
+
+        function filterReviews(rating) {
+            renderReviews(rating);
+            document.getElementById('filterAll').classList.toggle('active', rating === 0);
+            document.getElementById('filter5').classList.toggle('active', rating === 5);
+        }
+
+        function addToRecentlyViewed(id) {
+            let recent = JSON.parse(localStorage.getItem('maven_recent')) || [];
+            recent = recent.filter(pId => pId !== id);
+            recent.unshift(id);
+            localStorage.setItem('maven_recent', JSON.stringify(recent.slice(0, 4)));
+        }
+
+        function renderRecentlyViewed(currentId) {
+            const grid = document.getElementById('recentlyViewedGrid');
+            const recentIds = JSON.parse(localStorage.getItem('maven_recent')) || [];
+            const filteredIds = recentIds.filter(id => id !== currentId);
+            if (filteredIds.length === 0) {
+                grid.parentElement.style.display = 'none';
+                return;
+            }
+            filteredIds.forEach(id => {
+                const p = products.find(prod => prod.id === id);
+                if (p) {
+                    const card = document.createElement('div');
+                    card.className = 'product-card';
+                    card.innerHTML = `<div class="product-image-container"><a href="product.html?id=${p.id}"><img src="${p.image}" alt="${p.name}"></a></div><div class="product-info"><h4 class="product-name">${p.name}</h4><p class="product-price">${formatPrice(p.price)}</p></div>`;
+                    grid.appendChild(card);
+                }
+            });
+        }
+
+        function attachProductListeners() {
+            const mainImg = document.getElementById('mainImage');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(t => t.addEventListener('click', () => { mainImg.src = t.src; thumbnails.forEach(th => th.classList.remove('active')); t.classList.add('active'); }));
+            const sizeBtns = document.querySelectorAll('.size-btn');
+            sizeBtns.forEach(b => b.addEventListener('click', () => { sizeBtns.forEach(btn => btn.classList.remove('active')); b.classList.add('active'); }));
+            const colorBtns = document.querySelectorAll('.color-btn');
+            colorBtns.forEach(b => b.addEventListener('click', () => { colorBtns.forEach(btn => btn.classList.remove('active')); b.classList.add('active'); }));
+            const qtyInput = document.getElementById('quantity');
+            if (qtyInput) {
+                document.querySelector('.qty-btn.minus').addEventListener('click', () => { if (qtyInput.value > 1) qtyInput.value--; });
+                document.querySelector('.qty-btn.plus').addEventListener('click', () => { if (qtyInput.value < 10) qtyInput.value++; });
+            }
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            document.getElementById('zoomTrigger').addEventListener('click', () => { lightbox.style.display = "flex"; lightboxImg.src = mainImg.src; });
+            document.querySelector('.close-lightbox').addEventListener('click', () => { lightbox.style.display = "none"; });
+        }
+    </script>
+</body>
+</html>
