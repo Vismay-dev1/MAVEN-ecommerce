@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="MAVEN - Premium Modern Menswear. Elevated essentials for the contemporary man. Shop our curated collection of jackets, shirts, and accessories.">
-    <meta property="og:title" content="MAVEN | Modern Men's Fashion">
-    <meta property="og:description" content="Elevated essentials for the contemporary man. Modern design, premium quality.">
+    <meta name="description" content="AURA LUXE - Timeless Elegance, Modern Craft. Discover our curated collection of premium Men's fashion accessories.">
+    <meta property="og:title" content="AURA LUXE | Timeless Elegance">
+    <meta property="og:description" content="Curated luxury fashion accessories for the modern man. Timepieces, leather goods, and more.">
     <meta property="og:type" content="website">
-    <title>MAVEN | Premium Modern Menswear</title>
+    <title>AURA LUXE | Timeless Elegance</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,23 +19,22 @@
                 <span></span>
             </div>
             <div class="logo">
-                <a href="index.html">MAVEN</a>
+                <a href="index.html">AURA</a>
             </div>
             <nav class="main-nav" id="mainNav">
                 <ul>
-                    <li><a href="#home">HOME</a></li>
-                    <li><a href="#shop">SHOP</a></li>
-                    <li><a href="#categories">COLLECTIONS</a></li>
-                    <li><a href="#philosophy">ABOUT</a></li>
-                    <li class="mobile-only"><a href="account.html">ACCOUNT</a></li>
-                    <li><a href="account.html#wishlist" class="mobile-only">WISHLIST</a></li>
-                    <li><a href="account.html#orders" class="mobile-only">MY ORDERS</a></li>
+                    <li><a href="index.html">Collections</a></li>
+                    <li><a href="#featured">Curated</a></li>
+                    <li><a href="#shop">Shop All</a></li>
+                    <li><a href="#philosophy">Heritage</a></li>
+                    <li class="mobile-only"><a href="account.html">Profile</a></li>
+                    <li><a href="account.html#wishlist" class="mobile-only">Wishlist</a></li>
                 </ul>
             </nav>
             <div class="header-icons">
                 <div class="search-container">
-                    <img src="https://img.icons8.com/material-outlined/20/000000/search--v1.png" alt="Search">
-                    <input type="text" id="searchInput" placeholder="Search...">
+                    <img src="https://img.icons8.com/material-outlined/20/ffffff/search--v1.png" alt="Search">
+                    <input type="text" id="searchInput" placeholder="Search collection...">
                 </div>
                 <a href="account.html" class="icon account-icon" aria-label="Account">
                     <img src="https://img.icons8.com/material-outlined/24/000000/user-male-circle.png" alt="Account">
@@ -52,7 +51,7 @@
     <div class="cart-overlay" id="cartOverlay" onclick="closeCartDrawer()"></div>
     <div class="cart-drawer" id="cartDrawer">
         <div class="cart-drawer-header">
-            <h3>YOUR CART</h3>
+            <h3>SHOPPING BAG</h3>
             <span class="close-cart" onclick="closeCartDrawer()">&times;</span>
         </div>
         <div class="cart-drawer-items" id="cartDrawerItems">
@@ -60,79 +59,43 @@
         </div>
         <div class="cart-drawer-footer">
             <div class="summary-row" style="margin-bottom: 15px; font-weight: 700;">
-                <span>SUBTOTAL</span>
+                <span>TOTAL ESTIMATE</span>
                 <span id="cartDrawerTotal">₹0</span>
             </div>
-            <p style="font-size: 11px; color: var(--text-light); margin-bottom: 20px;">FREE delivery on orders above ₹3,000</p>
-            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW CART</a>
-            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">CHECKOUT</a>
+            <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 20px;">Complimentary global shipping on all orders over ₹50,000.</p>
+            <a href="cart.html" class="btn btn-outline" style="width: 100%; margin-bottom: 10px;">VIEW BAG</a>
+            <a href="checkout.html" class="btn btn-primary" style="width: 100%;">PURCHASE NOW</a>
         </div>
     </div>
 
     <main id="home">
         <section class="hero">
-            <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?q=80&w=2070&auto=format&fit=crop')">
-            </div>
-            <div class="hero-overlay"></div>
-            <div class="hero-content">
-                <div class="container">
-                    <span class="est fade-in">EST. 22</span>
-                    <h1 class="fade-in">MODERN // MINIMAL</h1>
-                    <p class="subheadline fade-in">ELEVATED ESSENTIALS FOR THE CONTEMPORARY MAN.</p>
-                    <a href="#shop" class="btn btn-primary fade-in">EXPLORE COLLECTION</a>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="fade-in">
+                        <span>Timeless</span>
+                        Elegance
+                    </h1>
+                    <p class="fade-in">Experience the pinnacle of craftsmanship. Our curated collection of timepieces and leather goods defines the modern standard of luxury.</p>
+                    <div class="hero-actions fade-in">
+                        <a href="#shop" class="btn btn-primary">SHOP COLLECTION</a>
+                        <a href="#philosophy" class="btn btn-outline" style="margin-left: 1rem;">OUR HERITAGE</a>
+                    </div>
                 </div>
+            </div>
+            <div class="hero-visual">
+                <div class="aura-orb"></div>
             </div>
         </section>
 
         <section class="featured-collection" id="featured">
             <div class="container">
                 <div class="section-title">
-                    <h2>FEATURED // DROPS</h2>
-                    <p>Hand-picked selections from our latest release.</p>
+                    <h2>The Masterpiece Collection</h2>
+                    <p>Exquisitely crafted essentials for the discerning gentleman.</p>
                 </div>
-                <div class="featured-grid">
+                <div class="featured-grid" id="featuredGrid">
                     <!-- Featured items will be injected by JS -->
-                </div>
-            </div>
-        </section>
-
-        <section class="categories" id="categories">
-            <div class="container">
-                <div class="section-title">
-                    <h2>THE UNIFORM // OF THE UNSEEN</h2>
-                    <p>Our core collection featuring essential pieces for the modern man.</p>
-                </div>
-                <div class="categories-grid">
-                    <div class="category-card" onclick="document.querySelector('input[value=\'jackets\']').click(); location.href='#shop';">
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1935&auto=format&fit=crop" alt="Jackets">
-                        </div>
-                        <div class="category-info">
-                            <h3>JACKETS</h3>
-                            <p>Premium outerwear</p>
-                            <span class="explore-link">EXPLORE MORE →</span>
-                        </div>
-                    </div>
-                    <div class="category-card" onclick="document.querySelector('input[value=\'shirts\']').click(); location.href='#shop';">
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1621072156002-e2fcced0b170?q=80&w=1974&auto=format&fit=crop" alt="Shirts">
-                        </div>
-                        <div class="category-info">
-                            <h3>SHIRTS</h3>
-                            <p>Essential layers</p>
-                            <span class="explore-link">EXPLORE MORE →</span>
-                        </div>
-                    </div>
-                    <div class="category-card" onclick="document.querySelector('input[value=\'pants\']').click(); location.href='#shop';">
-                        <div class="category-image">
-                            <img src="https://images.unsplash.com/photo-1473966968600-fa804b86d30b?q=80&w=1974&auto=format&fit=crop" alt="Pants">
-                        </div>
-                        <div class="category-info">
-                            <h3>PANTS</h3>
-                            <p>Modern fit</p>
-                            <span class="explore-link">EXPLORE MORE →</span>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -140,52 +103,34 @@
         <section class="shop-section" id="shop">
             <div class="container">
                 <div class="section-title">
-                    <h2>EVERYDAY // SELECTION</h2>
+                    <h2>Bespoke Selection</h2>
+                    <p>Filter by category or budget to find your perfect match.</p>
                 </div>
                 <div class="showcase-container">
                     <aside class="filters-sidebar">
                         <div class="filter-group">
                             <h4>CATEGORY</h4>
                             <div class="filter-options" id="categoryFilters">
-                                <label><input type="checkbox" value="jackets"> Jackets</label>
-                                <label><input type="checkbox" value="shirts"> Shirts</label>
-                                <label><input type="checkbox" value="pants"> Pants</label>
-                                <label><input type="checkbox" value="shorts"> Shorts</label>
+                                <label><input type="checkbox" value="timepieces"> Timepieces</label>
+                                <label><input type="checkbox" value="leather"> Leather Goods</label>
+                                <label><input type="checkbox" value="eyewear"> Eyewear</label>
                                 <label><input type="checkbox" value="accessories"> Accessories</label>
                             </div>
                         </div>
 
                         <div class="filter-group">
-                            <h4>SIZE</h4>
+                            <h4>VARIANT</h4>
                             <div class="filter-options" id="sizeFilters">
-                                <label><input type="checkbox" value="XS"> XS</label>
-                                <label><input type="checkbox" value="S"> S</label>
-                                <label><input type="checkbox" value="M"> M</label>
-                                <label><input type="checkbox" value="L"> L</label>
-                                <label><input type="checkbox" value="XL"> XL</label>
+                                <label><input type="checkbox" value="Standard"> Standard</label>
+                                <label><input type="checkbox" value="Large"> Large</label>
+                                <label><input type="checkbox" value="One Size"> One Size</label>
                             </div>
                         </div>
 
                         <div class="filter-group">
                             <h4>PRICE RANGE (₹)</h4>
-                            <input type="range" id="priceRange" min="0" max="50000" step="100" value="50000">
-                            <p id="priceLabel">₹0 - ₹50,000</p>
-                        </div>
-
-                        <div class="filter-group">
-                            <h4>RATING</h4>
-                            <div class="filter-options" id="ratingFilters">
-                                <label><input type="checkbox" value="4"> ⭐⭐⭐⭐+ (4 & above)</label>
-                                <label><input type="checkbox" value="3"> ⭐⭐⭐+ (3 & above)</label>
-                            </div>
-                        </div>
-
-                        <div class="filter-group">
-                            <h4>DISCOUNT</h4>
-                            <div class="filter-options" id="discountFilters">
-                                <label><input type="checkbox" value="30"> 30% or more</label>
-                                <label><input type="checkbox" value="50"> 50% or more</label>
-                            </div>
+                            <input type="range" id="priceRange" min="0" max="300000" step="5000" value="300000">
+                            <p id="priceLabel">₹0 - ₹3,00,000</p>
                         </div>
                     </aside>
 
@@ -193,11 +138,10 @@
                         <div class="sort-options">
                             <label for="sortSelect">Sort by:</label>
                             <select id="sortSelect">
-                                <option value="newest">Newest First</option>
+                                <option value="newest">Newest Arrivals</option>
                                 <option value="price-low">Price: Low to High</option>
                                 <option value="price-high">Price: High to Low</option>
-                                <option value="rating">Highest Rated</option>
-                                <option value="discount">Highest Discount</option>
+                                <option value="rating">Customer Rating</option>
                             </select>
                         </div>
 
@@ -210,44 +154,44 @@
         </section>
 
         <section class="philosophy-section" id="philosophy">
-            <div class="philosophy-overlay"></div>
-            <div class="philosophy-content">
-                <div class="container">
-                    <h2>QUIET // DESIGN</h2>
-                    <p>We believe in the power of simplicity. Our designs speak through quality, not noise. Every stitch is intentional, every fabric is chosen for its longevity and feel.</p>
-                    <button class="btn btn-primary">READ OUR STORY</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="testimonials">
             <div class="container">
                 <div class="section-title">
-                    <h2>TRUSTED BY // ROUTINE</h2>
+                    <h2>The Aura Philosophy</h2>
+                    <p>Where tradition meets modern innovation.</p>
                 </div>
-                <div class="testimonials-grid" id="testimonialGrid">
-                    <!-- Testimonials -->
+                <div class="product-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    <div class="product-card glass">
+                        <h3>Artisanal Mastery</h3>
+                        <p style="color: var(--text-muted); margin-top: 1rem;">Every piece is handcrafted by master artisans with decades of experience in traditional techniques.</p>
+                    </div>
+                    <div class="product-card glass">
+                        <h3>Exotic Materials</h3>
+                        <p style="color: var(--text-muted); margin-top: 1rem;">We source only the finest full-grain leathers and aerospace-grade metals from sustainable suppliers.</p>
+                    </div>
+                    <div class="product-card glass">
+                        <h3>Timeless Design</h3>
+                        <p style="color: var(--text-muted); margin-top: 1rem;">Our aesthetic transcends trends, focusing on clean lines and functional elegance that lasts a lifetime.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="newsletter-section">
             <div class="container">
-                <div class="newsletter-container">
-                    <h3>STAY UPDATED</h3>
-                    <p>Get exclusive drops, style tips, and 10% off your first order</p>
+                <div class="newsletter-container glass" style="padding: 4rem; border-radius: 24px;">
+                    <h3>The Aura Circle</h3>
+                    <p>Join our inner circle for exclusive previews and private events.</p>
                     <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
+                        <input type="email" placeholder="gentleman@aura.com" required style="background: rgba(255,255,255,0.05); border: 1px solid var(--border-dim); color: white; padding: 1rem; border-radius: 8px;">
                         <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
                     </form>
-                    <p class="privacy-text">We respect your privacy. Unsubscribe anytime.</p>
                 </div>
             </div>
         </section>
     </main>
 
     <div id="quickViewModal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content glass">
             <span class="close-modal">&times;</span>
             <div id="quickViewBody"></div>
         </div>
@@ -257,52 +201,47 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-column">
-                    <h4>ABOUT</h4>
+                    <div class="logo" style="margin-bottom: 1rem;"><a href="#">AURA</a></div>
+                    <p style="color: var(--text-muted);">Crafting timeless essentials for the modern man. Elegance redefined through artisanal mastery.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Collections</h4>
+                    <ul>
+                        <li><a href="#">Timepieces</a></li>
+                        <li><a href="#">Leather Goods</a></li>
+                        <li><a href="#">Eyewear</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Concierge</h4>
+                    <ul>
+                        <li><a href="#">Order Status</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>The House</h4>
                     <ul>
                         <li><a href="#">About Us</a></li>
-                        <li><a href="#">Our Story</a></li>
                         <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>SHOP</h4>
-                    <ul>
-                        <li><a href="#shop">New Arrivals</a></li>
-                        <li><a href="#categories">Collections</a></li>
-                        <li><a href="#shop">Sale</a></li>
-                        <li><a href="#">Gift Cards</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>SUPPORT</h4>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-column">
-                    <h4>FOLLOW</h4>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter/X</a></li>
-                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">Security</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2024 MAVEN. All rights reserved.</p>
+                <p>&copy; 2024 AURA LUXE. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
+                    <a href="#">Ethical Sourcing</a>
                 </div>
             </div>
         </div>
