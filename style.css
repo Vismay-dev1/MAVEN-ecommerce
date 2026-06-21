@@ -79,6 +79,11 @@ a {
     transition: var(--transition-base);
 }
 
+:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+}
+
 ul {
     list-style: none;
 }
@@ -248,8 +253,16 @@ h4 { font-size: 20px; font-weight: 600; letter-spacing: 1px; }
     padding: var(--space-xs);
     font-size: 13px;
     width: 150px;
-    outline: none;
     font-family: var(--font-body);
+}
+
+.search-container input:focus {
+    outline: none;
+}
+
+.search-container input:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
 }
 
 .icon {

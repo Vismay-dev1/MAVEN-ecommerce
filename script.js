@@ -920,9 +920,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuBtn = document.getElementById('mobileMenuBtn');
     const mainNav = document.getElementById('mainNav');
     if (menuBtn && mainNav) {
-        menuBtn.addEventListener('click', () => {
-            menuBtn.classList.toggle('active');
+        const toggleMenu = () => {
+            const isActive = menuBtn.classList.toggle('active');
             mainNav.classList.toggle('active');
+            menuBtn.setAttribute('aria-expanded', isActive);
+        };
+        menuBtn.addEventListener('click', toggleMenu);
+        menuBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleMenu();
+            }
         });
     }
 
