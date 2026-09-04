@@ -523,6 +523,22 @@ let currentFilters = {
     sort: 'newest'
 };
 
+// Intersection Observer for lazy loading
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+                img.removeAttribute('data-src');
+                observer.unobserve(img);
+            }
+        }
+    });
+}, {
+    rootMargin: '50px'
+});
+
 function renderProducts(productsToRender) {
     const grid = document.getElementById('mainProductGrid');
     if (!grid) return;
@@ -688,7 +704,7 @@ function renderCartDrawer() {
                     </div>
                     <span style="font-weight: 700; font-size: 14px;">${formatPrice(item.price * item.quantity)}</span>
                 </div>
-                <button onclick="removeFromCartDrawer(${index})" style="background: none; border: none; color: var(--error); font-size: 10px; font-weight: 700; cursor: pointer; text-decoration: underline; margin-top: 5px;">REMOVE</button>
+                <button onclick="removeFromCartDrawer(${index})" style="background: none; border: none; color: var(--error); font-size: 10px; font-weight: 700; cursor: pointer; text-decoration: underline; margin-top: 8px;">REMOVE</button>
             </div>
         `;
         container.appendChild(itemEl);
@@ -704,7 +720,7 @@ function updateCartDrawerQty(index, delta) {
     localStorage.setItem('maven_cart', JSON.stringify(cart));
     renderCartDrawer();
     updateCartCount();
-    if (typeof renderCart === 'function') renderCart(); // Update main cart page if present
+    if (typeof renderCart === 'function') renderCart();
 }
 
 function removeFromCartDrawer(index) {
@@ -764,6 +780,29 @@ function openQuickView(productId) {
     modal.style.display = 'flex';
 }
 
+// Scroll Performance Optimization
+let lastScrollY = 0;
+const scrollHandler = throttle(() => {
+    const header = document.querySelector('.header');
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > 50) {
+        if (!header.classList.contains('scrolled')) {
+            header.classList.add('scrolled');
+        }
+    } else {
+        if (document.title.includes('Product Detail') || 
+            document.title.includes('Shopping Cart') || 
+            document.title.includes('Checkout') || 
+            document.title.includes('My Account')) {
+            // Keep scrolled state on these pages
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    lastScrollY = currentScrollY;
+}, 100);
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initial Render
     renderProducts(products);
@@ -771,16 +810,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderCartDrawer();
 
     // Scroll handling for sticky header
-    window.addEventListener('scroll', throttle(() => {
-        const header = document.querySelector('.header');
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
-        } else {
-            if (!document.title.includes('Product Detail') && !document.title.includes('Shopping Cart') && !document.title.includes('Checkout') && !document.title.includes('My Account')) {
-                header.classList.remove('scrolled');
-            }
-        }
-    }, 100));
+    window.addEventListener('scroll', scrollHandler);
 
     // Search Functionality
     const searchInput = document.getElementById('searchInput');
@@ -895,9 +925,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const testimonialGrid = document.getElementById('testimonialGrid');
     if (testimonialGrid) {
         const testimonials = [
-            { name: "DAVID CHEN", role: "Architect", text: "MAVEN has completely redefined my wardrobe. The quality is unmatched.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop" },
-            { name: "MARCUS REED", role: "Creative Director", text: "I appreciate the minimalist approach. Pure quality and great silhouettes.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop" },
-            { name: "ALEX RIVERA", role: "Software Engineer", text: "Fast shipping and incredible packaging. A brand that truly cares.", image: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop" }
+            { name: "DAVID CHEN", role: "Architect", text: "MAVEN has completely redefined my wardrobe. The quality is unmatched.", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7240f9b?q=80&w=150&h=150&fit=crop" },
+            { name: "MARCUS REED", role: "Creative Director", text: "I appreciate the minimalist approach. Pure quality and great silhouettes.", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&h=150&fit=crop" },
+            { name: "ALEX RIVERA", role: "Software Engineer", text: "Fast shipping and incredible packaging. A brand that truly cares.", image: "https://images.unsplash.com/photo-1492562080023-ab7dbab615b0?q=80&w=150&h=150&fit=crop" },
         ];
 
         testimonials.forEach(t => {
@@ -915,7 +945,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // Mobile menu toggle
     const menuBtn = document.getElementById('mobileMenuBtn');
     const mainNav = document.getElementById('mainNav');
@@ -932,18 +961,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleMenu();
             }
         });
+
+        // Close menu when clicking on links
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('active');
+                mainNav.classList.remove('active');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
     }
 
     // Product Gallery switching
     const mainImage = document.getElementById('mainImage');
     const thumbnails = document.querySelectorAll('.thumbnail');
-    thumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-            mainImage.src = thumb.src;
-            thumbnails.forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
+    if (mainImage) {
+        thumbnails.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                mainImage.src = thumb.src;
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumb.classList.add('active');
+            });
         });
-    });
+    }
 
     // Size selection
     const sizeBtns = document.querySelectorAll('.size-btn');
@@ -971,7 +1011,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const qtyInput = document.getElementById('quantity');
     const minusBtn = document.querySelector('.qty-btn.minus');
     const plusBtn = document.querySelector('.qty-btn.plus');
-    if (qtyInput) {
+    if (qtyInput && minusBtn && plusBtn) {
         minusBtn.addEventListener('click', () => {
             if (qtyInput.value > 1) qtyInput.value--;
         });
@@ -989,7 +1029,8 @@ document.addEventListener('DOMContentLoaded', () => {
             tabBtns.forEach(b => b.classList.remove('active'));
             tabContents.forEach(c => c.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
+            const targetTab = document.getElementById(tabId);
+            if (targetTab) targetTab.classList.add('active');
         });
     });
 
@@ -1002,7 +1043,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
                 targetElement.scrollIntoView({
-                    behavior: 'smooth'
+                    behavior: 'smooth',
+                    block: 'start'
                 });
             }
         });
