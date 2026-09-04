@@ -1,10 +1,10 @@
 /* Premium Enhancements for MAVEN */
 
 :root {
-    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-bg: rgba(255, 255, 255, 0.95);
     --glass-border: rgba(255, 255, 255, 0.2);
     --premium-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-    --accent-orange: #ff4d00;
+    --accent-orange: #ff6b35;
     --primary-black: #000000;
 }
 
@@ -31,6 +31,7 @@
 /* Enhanced Product Cards */
 .product-card {
     transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
 }
 
 .product-card:hover {
@@ -40,10 +41,12 @@
 
 .product-image-container {
     overflow: hidden;
+    contain: layout style paint;
 }
 
 .product-image-container img {
     transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+    will-change: transform;
 }
 
 .product-card:hover .product-image-container img {
@@ -58,7 +61,7 @@
 
 /* Smooth Scrollbar */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -68,10 +71,26 @@
 ::-webkit-scrollbar-thumb {
     background: #333;
     border-radius: 10px;
+    transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+/* Performance optimizations */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.btn, a, button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 /* Mobile Optimisations */
@@ -153,10 +172,450 @@
     .mobile-menu-btn {
         display: flex !important;
     }
+
+    /* Improve tap targets */
+    .icon {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Better mobile navigation */
+    .main-nav {
+        max-height: calc(100vh - 60px);
+        overflow-y: auto;
+    }
+
+    .main-nav ul li a {
+        padding: 12px 16px;
+    }
+
+    /* Mobile form inputs */
+    input, select, textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
 }
 
 /* Tap target improvements */
 a, button, .category-card, .product-card {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth transitions for interactive elements */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* Enhanced animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Loading states */
+.loading {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Better focus states for keyboard navigation */
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+}
+
+/* Smooth scroll behavior enhancement */
+html {
+    scroll-behavior: smooth;
+}
+
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Enhancement for dark mode support (future-proofing) */
+@media (prefers-color-scheme: dark) {
+    ::-webkit-scrollbar-track {
+        background: #1a1a1a;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #666;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #888;
+    }
+}
+
+/* Performance: Will-change for animated elements */
+.product-card:hover,
+.category-card:hover,
+.btn:hover {
+    will-change: transform;
+}
+
+/* Prevent layout shift on scrollbar appearance */
+html {
+    overflow-y: scroll;
+}
+
+/* Better image rendering */
+img {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* Smooth color transitions */
+a, button, .icon {
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Enhanced visibility for interactive elements */
+.btn, a, button {
+    position: relative;
+    z-index: 1;
+}
+
+/* Better hover states */
+a:hover {
+    color: var(--accent-orange);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+/* Mobile-friendly input styling */
+input, select, textarea {
+    font-size: 16px;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+/* Prevent text selection on double tap */
+button, a {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* Smooth backdrop filter for modals */
+.modal, .cart-overlay {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Better contrast for text */
+body {
+    text-rendering: optimizeLegibility;
+}
+
+/* Improve font rendering */
+h1, h2, h3, h4, h5, h6 {
+    font-kerning: auto;
+    font-feature-settings: "kern" 1;
+}
+
+/* Better link styling */
+a {
+    color: inherit;
+}
+
+a:visited {
+    color: inherit;
+}
+
+/* Smooth transitions for cart drawer */
+.cart-drawer {
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced modal animations */
+.modal-content {
+    animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Better focus management for modals */
+.modal:focus-within {
+    outline: none;
+}
+
+/* Improved touch feedback */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        padding: 14px 20px;
+    }
+
+    .icon {
+        min-width: 48px;
+        min-height: 48px;
+    }
+}
+
+/* Performance: Optimize filter sidebar */
+.filters-sidebar {
+    contain: layout style paint;
+}
+
+/* Smooth filter transitions */
+.filter-options label {
+    transition: color 0.2s ease;
+}
+
+.filter-options label:hover {
+    color: var(--accent-orange);
+}
+
+/* Better cart drawer scrolling */
+.cart-drawer-items {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* Improved footer link styling */
+.footer-column ul li a {
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    padding-left: 5px;
+}
+
+/* Better product card transitions */
+.product-card {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* Smooth price transitions */
+.product-price {
+    transition: all 0.3s ease;
+}
+
+/* Better testimonial card styling */
+.testimonial-card {
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Enhanced newsletter form */
+.newsletter-form input {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form input:focus {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+}
+
+/* Better size/color selector styling */
+.size-btn, .color-btn {
+    transition: all 0.2s ease;
+}
+
+.size-btn:hover, .color-btn:hover {
+    transform: scale(1.05);
+}
+
+.size-btn.active, .color-btn.active {
+    transform: scale(1.05);
+}
+
+/* Improved quantity selector */
+.quantity-selector {
+    transition: all 0.2s ease;
+}
+
+.qty-btn:active {
+    background-color: var(--bg-light);
+}
+
+/* Better tab navigation */
+.tab-btn {
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.tab-btn::after {
+    transition: width 0.3s ease;
+}
+
+/* Smooth modal transitions */
+.modal {
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+}
+
+/* Better lightbox styling */
+.lightbox {
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.show {
+    display: flex;
+}
+
+/* Toast notification improvements */
+.toast {
+    animation: slideInRight 0.3s ease-out;
+}
+
+.toast.fade-out {
+    animation: slideOutRight 0.3s ease-out forwards;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* Better breadcrumb styling */
+.breadcrumb a {
+    transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+    color: var(--accent-orange);
+}
+
+/* Improved search input styling */
+.search-container input {
+    transition: all 0.3s ease;
+}
+
+.search-container:focus-within {
+    box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+}
+
+/* Better checkbox styling */
+input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--accent-orange);
+}
+
+/* Enhanced range input */
+input[type="range"] {
+    cursor: pointer;
+    accent-color: var(--accent-orange);
+}
+
+/* Better select styling */
+select {
+    cursor: pointer;
+}
+
+/* Smooth transition for all interactive states */
+* {
+    --transition-duration: 0.3s;
+    --transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Better spacing on mobile */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .product-card .product-info {
+        padding: 8px !important;
+    }
+
+    .btn {
+        padding: 10px 16px !important;
+    }
+
+    input, select, textarea {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Print styles */
+@media print {
+    .header, .footer, .cart-drawer, .mobile-menu-btn {
+        display: none;
+    }
 }
